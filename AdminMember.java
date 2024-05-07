@@ -1,4 +1,5 @@
-//caroline
-public class AdminMember{
+//Author Caroline B.
+
+public class AdminMember {
 
 }
