@@ -1,1 +1,6 @@
-public class Person
+public class Person{
+
+String name;
+String phone;
+
+}

@@ -1,1 +1,2 @@
+//jasmin
 public class CompetitionHandler
