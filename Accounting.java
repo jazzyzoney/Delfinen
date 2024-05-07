@@ -1,3 +1,4 @@
+
 //Solvej
 
 import java.util.ArrayList;
@@ -49,9 +50,6 @@ public class Accounting{
       System.out.println("The following: " + membershipFee + "is overdue.");
    }
    
-   
-
-}
 
 
 
