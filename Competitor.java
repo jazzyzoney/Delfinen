@@ -1,2 +1,10 @@
 //jasmin
-public class Competitor
+import java.util.ArrayList;
+
+public class Competitor extends Member{
+
+String ;
+int rank;
+
+
+}
