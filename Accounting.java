@@ -1,4 +1,3 @@
-//Solvej
 
 import java.util.ArrayList;
  //package for setting date for overdue payments
@@ -16,12 +15,11 @@ public class Accounting{
    private static int invoiceNumber = 0; //invoice number
    
    
-   
    //constructor to initialize variables
    //initialized so that fee can updated/increased later 
    public Accounting(int juniorFee, int seniorFee, 
    int overSixtyFee, int passiveFee){ //variables that will called upon in controller
-   
+    
    overdueList = new ArrayList<>(); //must remain local to this class and not sent to controller
    this.juniorFee = juniorFee;
    this.seniorFee = seniorFee;
@@ -29,28 +27,33 @@ public class Accounting{
    this.passiveFee = passiveFee;
    this.isOverdue = false; //invoice not overdue yet upon creation
    this.isPaid = false; //invoice not paid yet upon creation
-  
+  //false/variables above default value
+   }
+    
+   
+   public int membershipFee(String membershipType){
+      switch (membership.toLowerCase()){
+         case "Junior":
+            return juniorFee;
+         case "Senior" :
+            return seniorFee;
+         case "+60" : 
+            return overSixtyFee;
+         case "Passive member" :
+            return passiveFee;
+         default: 
+            throw new IllegalArgumentException("Invalid membership type: " + membershipType); 
+      }
    }
    
-   public int membershipFee(){//method to find fee according to type of membership
-      return membershipFee;
-   }
-   
-   public int createInvoice(membershipFee, isActive, invoiceNumber){
+   public int createInvoice(String membershipFee, boolean isActive, int invoiceNumber){
       invoiceNumber++;
-      return createInvoice; //method to create invoice according to membership, whether active or not, plus memberID
+      int fee = getMembershipFee(membershipType);
+      System.out.println("Your payment of: " + invoiceNumber + " : " + membershipFee() + "is due: " + LocalDate);
+      return newInvoice(invoiceNumber, memberID, fee, isActive);; //method to create invoice according to membership, whether active or not, plus memberID
    }
-   
-   public void PrintPaymentDue(membershipFee, LocalDate, invoiceNumber){
-      System.out.println("Your payment of: " + invoiceNumber + " : " + membershipFee + "is due: " + LocalDate);
-   }
-   
-   public void printOverdueFee(membershipFee, LocalDate){
-      System.out.println("The following: " + membershipFee + "is overdue.");
-   }
-   
-   
-
+    
+   //public void sumMemberPayments/ accruals??
 }
 
 
