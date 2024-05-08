@@ -10,19 +10,18 @@ public class AdminMember extends Member{
 
 
 
- public AdminMember(String memberID, String name, LocalDate dateOfBirth, int phoneNumber, boolean membershipType, boolean activityType) {
-        this.memberID = memberID;
+ public AdminMember(String memberID, String name, LocalDate birthDate, int phoneNumber, boolean membershipType, boolean activityType) {
+        this.memberId = memberId;
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
+        this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
         this.membershipType = membershipType;
         this.activityType = activityType;
 
 
 
- //This methods is used to create a random Member ID to the member of the swim club
- 
-    public String createId(){
+ //This methods is used to create a random Member Id to a  new member of the swim club 
+    private String createId() {
         var full = UUID.randomUUID();
         var fullAsString = full.toString();
         return fullAsString.substring(0,8);//generates a unique 8-character ID using UUIDs.
