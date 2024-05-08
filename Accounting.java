@@ -1,4 +1,6 @@
 
+//Solvej
+
 import java.util.ArrayList;
  //package for setting date for overdue payments
 import java.util.LocalDate; //add method .now() with package 
@@ -50,11 +52,21 @@ public class Accounting{
       invoiceNumber++;
       int fee = getMembershipFee(membershipType);
       System.out.println("Your payment of: " + invoiceNumber + " : " + membershipFee() + "is due: " + LocalDate);
-      return newInvoice(invoiceNumber, memberID, fee, isActive);; //method to create invoice according to membership, whether active or not, plus memberID
+      return new Invoice(invoiceNumber, memberID, fee, isActive);; //method to create invoice according to membership, whether active or not, plus memberID
    }
+
     
    //public void sumMemberPayments/ accruals??
 }
 
+   
+   public void PrintPaymentDue(membershipFee, LocalDate, invoiceNumber){
+      System.out.println("Your payment of: " + invoiceNumber + " : " + membershipFee + "is due: " + LocalDate);
+   }
+   
+   public void printOverdueFee(membershipFee, LocalDate){
+      System.out.println("The following: " + membershipFee + "is overdue.");
+   }
+   
 
 
