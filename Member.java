@@ -6,7 +6,7 @@ public class Member extends Person {
 
    public int memberId;
    public boolean isWoman = true;
-   public int ageInYears;
+   public int age;
    public LocalDate birthDate;
    public boolean active;
    public boolean competitive; 
@@ -26,11 +26,11 @@ public class Member extends Person {
    public int getMemberId(){
       return memberId;
    }
-   public boolean isWoman(){
+   public boolean isWoman(){ // skal get være getIsWoman?
       return isWoman;
    }
-   public int getAgeInYears(){
-   return ageInYears;
+   public int getAge(){
+   return age;
    }
    public LocalDate getBirthDate(){
       return birthDate;
