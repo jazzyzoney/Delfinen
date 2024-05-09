@@ -17,11 +17,11 @@ public int getPhoneNumber(){
 
 //setter 
 
-public void setName(){
+public void setName(String name){
      this.name = name;
 }
 
-public void setPhoneNumber(){
+public void setPhoneNumber(int phoneNumber){
      this.phoneNumber = phoneNumber;
 }
 
