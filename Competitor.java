@@ -11,7 +11,7 @@ public class Competitor extends Member{
    int rank;
    LocalDateTime date;
    LocalTime result;
-  
+   
    //getter
    public String getCoach(){
       return coach;
