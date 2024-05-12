@@ -84,7 +84,7 @@ public class CompetitionHandler{
             break;
          case 2:
             competitor.setResult(result.toString());
-            addMemberToDiscipline(competitor);
+            addMemberToDiscipline(competitor); //will def give problems since it only adds the result to the swimmer and not to specific disciplines
             System.out.println("Competition result registered for: " + competitor.getMemberId());
             break;
          default:
@@ -94,12 +94,13 @@ public class CompetitionHandler{
    
 //showing a list with competition results and a list with training results
    public void GetResults(){
-      //
+      //loop over hver arrayliste og printe
       
    }
 
 //top 5 swimmers in each swim discipline and age group
    public void TopFive(){
+      //loop over hver arrayliste, sortere efter tid og printe
       
    } 
 }
