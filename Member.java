@@ -26,7 +26,7 @@ public class Member extends Person {
    public int getMemberId(){
       return memberId;
    }
-   public boolean isWoman(){ // skal get være getIsWoman?
+   public boolean isWoman(){ 
       return isWoman;
    }
    public int getAge(){

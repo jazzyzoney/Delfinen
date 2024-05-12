@@ -40,7 +40,7 @@ public class AdminMember extends Member{
     }
 
         
-//This sets the membership type after age
+//This sets the membership type after age . konkurrence og motionist. 
         public void membershipAgeType() {
         ageCalculator(); // to calculate the age first. 
     if (age < 18) {
@@ -51,7 +51,11 @@ public class AdminMember extends Member{
         this.membershipType = "overSixtyFee";
     }
 }
+    public void  deleteMember() {
+      Member=null; 
     
-    
+    }
+    //Delete member
+    //Edit evt.
    
     } 
