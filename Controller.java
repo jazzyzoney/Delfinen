@@ -1,12 +1,10 @@
+import java.util.ArrayList;
+import java.time.localDate;
 
-//arraylists
-//localDate
-
-//solvej
 
 public class Controller{
 
-//instanciate imports
+
 
 Switch (option)
    Case
@@ -14,12 +12,12 @@ Switch (option)
 // 1) Search person
 // 2) Create new member
 // 3) Remove member
-// 4) Payments a) Create Invoice b) Register Payments c) Calculate membership payments 
-// 5) Enter Competition Profile
-// 6) 
-// 7)Enter Competition Results
-
+// 4) a) Create Invoice b) Update payment  
+// 5) Enter disciplin
+// 6) Enter Competition Results
 
 }
 
 //methods
+//Throw /Catch exceptions
+//
