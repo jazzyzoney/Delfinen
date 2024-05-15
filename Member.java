@@ -1,17 +1,31 @@
 //Author  Caroline B. 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
+import java.util.UUID;
 
 public class Member extends Person {
 
-   public int memberId;
+   public String memberId;
    public boolean isWoman = true;
-   public int age;
-   public LocalDate birthDate;
    public boolean active;
    public boolean competitive; 
    public String formatted;
    public String membershipType;
+   
+   
+   public Member (){
+   this.memberId = createId();
+   
+   }
+ 
+ //This methods is used to create a random Member Id to a  new member of the swim club 
+   private String createId() {
+      var full = UUID.randomUUID();
+      var fullAsString = full.toString();
+      return fullAsString.substring(0,8);//generates a unique 8-character ID using UUIDs.
+   }
+
+ 
+ 
  
   /* public Member (int memberId, boolean isWoman, LocalDate birthDate, boolean active, boolean competitive, String membershipAgeType){
    // Initializing the variables.this.id = id; 
@@ -23,18 +37,14 @@ public class Member extends Person {
    
    } */
    //getters
-   public int getMemberId(){
+   public String getMemberId(){
       return memberId;
    }
    public boolean isWoman(){ // skal get være getIsWoman?
       return isWoman;
    }
-   public int getAge(){
-   return age;
-   }
-   public LocalDate getBirthDate(){
-      return birthDate;
-   }
+  
+   
    public boolean isActive(){
       return active;
    }
@@ -48,16 +58,13 @@ public class Member extends Person {
       return membershipType;
    }
    //setters
-   public void setMemberId(int memberId){
+   public void setMemberId(String memberId){
     this.memberId = memberId;
    }
    public void setIsWoman(boolean isWoman){
       this.isWoman = isWoman;
    }
-   public void setBirthDate(String birthDate){
-      this.birthDate = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-   }
-   public void setActive(boolean active){
+      public void setActive(boolean active){
       this.active = active;
    }
    public void setCompetitive(boolean competitive){

@@ -30,21 +30,8 @@ public class AdminMember extends Member{
       }
    }
 
- //This methods is used to create a random Member Id to a  new member of the swim club 
-   private String createId() {
-      var full = UUID.randomUUID();
-      var fullAsString = full.toString();
-      return fullAsString.substring(0,8);//generates a unique 8-character ID using UUIDs.
-   }
-
-    //This calculates the age of the member
-   public void ageCalculator() {
-      LocalDate today = LocalDate.now();
-      this.getAge = Period.between(birthDate, today).getAge();
-        
-          // LocalDate skal løses mht. datatype og hvilken variable der skal bruges i denne metode
-   }
-   public void format() {
+ 
+       public void format() {
       DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
       formatted = birthDate.format(format);
    }
@@ -52,13 +39,55 @@ public class AdminMember extends Member{
         
 //This sets the membership type after age
    public void membershipAgeType() {
-      ageCalculator(); // to calculate the age first. 
+      int age = ageCalculator(); // to calculate the age first. 
       if (age < 18) {
          this.membershipType = "Junior";
-      } else if (age >= 18 && ageInYears <= 60) {
+      } else if (age >= 18 && age <= 60) {
          this.membershipType = "Senior";
       } else if (age > 60) {
          this.membershipType = "overSixtyFee";
       }
    }
+   
+   
+   public void removeClubMembers() {
+   
+   
+   
+   }
+   public void editClubMembers(){
+   
+   
+   }
+   
+   public void searchClubMembers(){
+   
+   
+   }
 }
+
+
+//Edit, delete og  find member metode. 
+
+
+
+
+// skal flyttes til files:
+
+/*public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+        format();
+        ageCalculator();
+        membershipAgeType();
+    }*/
+    
+    /*public class MemberList {
+    private ArrayList<Member> members;
+
+    public void removeMembersByCondition(Predicate<Member> condition) {
+        members.removeIf(condition);
+        System.out.println("Removed members matching the condition.");
+    }
+}*/
+
+/*try - catch*/  
