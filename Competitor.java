@@ -56,7 +56,7 @@ public class Competitor extends Member{
    }
    public void setResult(String result){
       // Define a format for the time string (e.g., HH:mm:ss)
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");  
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");  
       this.result = LocalTime.parse(result, formatter);
    }
    
@@ -66,7 +66,7 @@ public class Competitor extends Member{
       this.trainingDate = LocalDateTime.parse(trainingDate, formatter);
    }
    public void setTrainingResult(String trainingResult){
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");  
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");  
       this.trainingResult = LocalTime.parse(trainingResult, formatter);
    }
 }
