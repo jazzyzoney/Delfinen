@@ -7,6 +7,7 @@ public class Invoice {
    private PaymentStatus status;
    private LocalDate invoiceDate = LocalDate.now();
    private LocalDate dueDate = invoiceDate.plusDays(30);
+   //add 60 days rule? Exit member.
  
    public Invoice(PaymentStatus status, LocalDate invoiceDate, LocalDate dueDate){
    this.status = status;
