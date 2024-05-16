@@ -13,7 +13,7 @@ public class Member extends Person {
    public boolean competitive; 
    public String formatted;
    public String membershipType;
-   
+    
    
    public Member (){
    this.memberId = createId();

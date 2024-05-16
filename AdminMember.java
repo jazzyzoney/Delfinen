@@ -117,7 +117,7 @@ public class AdminMember extends Member{
     public void removeMembersByCondition(Predicate<Member> condition) {
         members.removeIf(condition);
         System.out.println("Removed members matching the condition.");
-    }
+    } 
 }*/
 
 /*try - catch*/  
