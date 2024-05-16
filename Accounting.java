@@ -33,9 +33,9 @@ public class Accounting{
     }
      
     public int createInvoice(String membershipType, paymentStatus status, int invoiceNumber){
-      var invoice = new Invoice(memberId, fee, paymentStatus, ); //add variables
+      var invoice = new Invoice(memberId, fee, paymentStatus, int invoiceNumber, String membershipType);
       invoices.add(invoice);
-      //invoices.edit(invoice);
+      invoices.edit(invoice);
       invoiceNumber++;
       int fee = getMembershipFee(membershipType);
          System.out.println("Invoice: " + invoiceNumber + fee); //print invoice    
