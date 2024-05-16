@@ -93,141 +93,108 @@ public class CompetitionHandler{
       }
    }
    
-   //showing a list with competition results and a list with training results
-   public void GetResults(){
-   
-      //loop over hver arrayliste og printe
-      for (String discipline : new String[]{"Back Crawl", "Crawl", "Breast", "Butterfly"}) {
-         
-         System.out.println("Senior " + discipline + " results: ");
-         
-         //SENIOR RESULTS
-         //print "senior:"
-         System.out.println();
-         //seniorBackCrawl
-         for (Competitor competitor : seniorBackCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
-            }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
-            }
-         }
-         //seniorCrawl
-         for (Competitor competitor : seniorCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
-            }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
-            }
-         }
-         //seniorBreast
-         for (Competitor competitor : seniorBreast){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
-            }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
-            }
-         }
-         //seniorButterfly
-         for (Competitor competitor : seniorButterfly){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
-            }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
-            }
-         }
+   public void printResult(Competitor competitor) { //helper method to prevent repetitive code
+      LocalTime result = LocalTime.parse(competitor.getResult().toString());
+      if(result != null) {
+         System.out.println(competitor.getName()); //competitor name
+         System.out.println("Competition result: " + result);
+         System.out.println("Date: " + competitor.getDate()); //competition date
+      }
       
-      //JUNIOR RESULTS
-      System.out.println("Junior " + discipline + " results: ");
-         //juniorBackCrawl
-         for (Competitor competitor : juniorBackCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
+      LocalTime trainingResult = competitor.getTrainingResult();
+      if (trainingResult != null) {
+         System.out.println("Training result: " + trainingResult);
+         System.out.println("Date: " + competitor.getTrainingDate()); //training date
+      }
+   }
+   
+   //showing a list with competition results and a list with training results
+   public void getResults(int discipline){
+      
+      int seniorDiscipline = discipline;
+      int juniorDiscipline = discipline;
+      
+      //loop over hver arrayliste og printe 
+      switch (seniorDiscipline){
+         //SENIOR RESULTS
+         //seniorBackCrawl
+         case 1:
+            System.out.println("Senior " + discipline + " results: ");
+            for (Competitor competitor : seniorBackCrawl){
+               printResult(competitor);
             }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
+            break;
+         //seniorCrawl
+         case 2:
+            System.out.println("Senior " + discipline + " results: ");
+            for (Competitor competitor : seniorCrawl){
+               printResult(competitor);
             }
-         }
-         //juniorCrawl
-         for (Competitor competitor : juniorCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
+            break;
+         //seniorBreast
+         case 3:
+            System.out.println("Senior " + discipline + " results: ");
+            for (Competitor competitor : seniorBreast){
+               printResult(competitor);
             }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
+            break;
+         //seniorButterfly
+         case 4:
+            System.out.println("Senior " + discipline + " results: ");
+            for (Competitor competitor : seniorButterfly){
+               printResult(competitor);
             }
-         }
-         //juniorBreast
-         for (Competitor competitor : juniorBreast){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
+            break;
+      }
+         
+         //JUNIOR RESULTS
+      switch (juniorDiscipline){
+            //juniorBackCrawl
+         case 1:
+            System.out.println("Junior " + discipline + " results: ");
+            for (Competitor competitor : juniorBackCrawl){
+               printResult(competitor);
             }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
+            break;
+            //juniorCrawl
+         case 2:
+            System.out.println("Junior " + discipline + " results: ");
+            for (Competitor competitor : juniorCrawl){
+               printResult(competitor);
             }
-         }
-         //juniorButterfly
-         for (Competitor competitor : juniorButterfly){
-            LocalTime result = LocalTime.parse(competitor.getResult().toString());
-            if(result != null) {
-               System.out.println(competitor.getName()); //name
-               System.out.println("Competition result: " + result);
-               System.out.println("Date: " + competitor.getDate()); //date
+            break;
+            //juniorBreast
+         case 3:
+            System.out.println("Junior " + discipline + " results: ");
+            for (Competitor competitor : juniorBreast){
+               printResult(competitor);
             }
-            LocalTime trainingResult = competitor.getTrainingResult();
-            if (trainingResult != null) {
-               System.out.println("Training result: " + trainingResult);
-               System.out.println("Date: " + competitor.getTrainingDate()); //date
+            break;
+            //juniorButterfly
+         case 4:
+            System.out.println("Junior " + discipline + " results: ");
+            for (Competitor competitor : juniorButterfly){
+               printResult(competitor);
             }
-         }
+            break;
       }
    } // END OF GETRESULTS METHOD
 
 //top 5 swimmers in each swim discipline and age group
    public void TopFive(){
       //loop over hver arrayliste, sortere efter tid og printe
-      
+      // ArrayList<Competitor> result = new ArrayList<>() læs op på linked lists og brug det i stedet for arraylist for at kunne rykke nemmere rundt på elementerne
+      // for (Competitor competitor : seniorCrawl) {
+      //   competitor.getTrainingResult()
+      //   for (Competitor otherCompetitor : result) {
+      //     if(competitor.getTrainingResult().isBefore(otherCompetitor.getTrainingResult()) {
+      //       competitor --> overtake otherCompetitors place in result arraylist
+      //     } 
+      //   }
+      // }
    } 
 }
+
 /*
 tested code in main:
       CompetitionHandler ch = new CompetitionHandler();
