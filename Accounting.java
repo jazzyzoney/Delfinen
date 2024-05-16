@@ -4,7 +4,8 @@
 //2)Creates invoice with membershipTypeFee
 //3)Adds invoice to Invoices ArrayList
 //4)Sets/resets payment status via ArrayList
-//5)Prints invoices
+//5)Deletes invoices
+//6)Prints invoices
 
 
 import java.util.List;
@@ -13,16 +14,14 @@ import java.time.LocalDate; //to set invoice dueDATE
 
 public class Accounting{
   
-    private final List<invoices> = new ArrayList<>();
+    private final List<Invoice> invoices = new ArrayList<>();
     
     private int juniorFee = 1000; //cost of membership for junior swimmer
     private int seniorFee = 1600; //cost of membership for +18 swimmer
     private int overSixtyFee = 1200; //Cost of membership for +60 swimmers
-    private int passiveFee = 500; // cost of passive membership
-   //create constructor with fees and without    
+    private int passiveFee = 500; // cost of passive membership   
    
-    public Accounting(int juniorFee, int seniorFee, 
-    int overSixtyFee, int passiveFee){
+    public Accounting(int juniorFee, int seniorFee, int overSixtyFee, int passiveFee){
       this.juniorFee = juniorFee;
       this.seniorFee = seniorFee;
       this.overSixtyFee = overSixtyFee;
@@ -30,12 +29,11 @@ public class Accounting{
     }
     
     public Accounting(){
-    //blank constructor needed here, but do I need to initialize categories as well?
+    //blank constructor
     }
      
-    public int createInvoice(String membershipType, paymentStatus status,//method to create invoice 
-      int invoiceNumber){
-      var invoice = new Invoice(memberId, fee)
+    public int createInvoice(String membershipType, paymentStatus status, int invoiceNumber){
+      var invoice = new Invoice(memberId, fee, paymentStatus, ); //add variables
       invoices.add(invoice);
       //invoices.edit(invoice);
       invoiceNumber++;
@@ -53,7 +51,7 @@ public class Accounting{
       }
 
     public void printInvoices(){ //print invoices? Or create option for printing active invoices?
-      for(var invoice : invoice){
+      for(var Invoice : invoices){
         invoice.print();
       }
     }
@@ -67,14 +65,18 @@ public class Accounting{
       }else {
        switch (membershipType){
          case "Junior": 
-            return Invoice.getJuniorFee();
+         break;
+           return Invoice.getJuniorFee();    
          case "Senior":
             return Invoice.getSeniorFee();
+            break;
          case "Over sixty!":
             return Invoice.getOverSixtyFee();
+            break;
          default: 
             System.out.println("Unknown membership type: " + membershipType);
             return 0;
+            break;
       }
    }
    }
@@ -91,6 +93,7 @@ public class Accounting{
          int inNBR = inNBR.getInvoiceNumber(); 
     }
 
+      //need to elaborate with if/else statments?
       public void payStatus(PaymentStatus paymentStatus){ //method to select pay status 
          switch(paymentStatus){                          
             case PAID:
@@ -110,8 +113,8 @@ public class Accounting{
              }
            }      
       
-      public static ArrayList<Invoice> overDueInvoice() { //method to find invoices in arrears 
-      ArrayList<Invoice> OverDueInvoice = new ArrayList<>();
+      public static ArrayList<invoices> overdueInvoice() { //method to find invoices in arrears 
+      ArrayList<Invoice> OverdueInvoice = new ArrayList<>();
          for (Invoice invoice : overdueInvoice) { // Code to be executed FOR EACH (loop) element
             if (invoice.status == PaymentStatus.OVERDUE) {
                overdue.add(invoice);

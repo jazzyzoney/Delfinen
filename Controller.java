@@ -14,6 +14,7 @@ Switch (option)
 // 3) Remove member
 // 4) a) Create Invoice b) Update payment  
 // 5) Enter disciplin
+
 // 6) Enter Competition Results
 
 }
