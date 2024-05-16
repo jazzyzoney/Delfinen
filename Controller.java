@@ -21,6 +21,8 @@ Member member = new Member();
     System.out.println(member.getPhoneNumber());
     System.out.println(member.getBirthDate());
     System.out.println(member.getAge());
+    System.out.println(member.getMembershipType());
+    
 
 
 }
