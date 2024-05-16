@@ -99,12 +99,14 @@ public class CompetitionHandler{
       //loop over hver arrayliste og printe
       for (String discipline : new String[]{"Back Crawl", "Crawl", "Breast", "Butterfly"}) {
          
+         System.out.println("Senior " + discipline + " results: ");
+         
          //SENIOR RESULTS
          //print "senior:"
          System.out.println();
          //seniorBackCrawl
          for (Competitor competitor : seniorBackCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -118,7 +120,7 @@ public class CompetitionHandler{
          }
          //seniorCrawl
          for (Competitor competitor : seniorCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -132,7 +134,7 @@ public class CompetitionHandler{
          }
          //seniorBreast
          for (Competitor competitor : seniorBreast){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -146,7 +148,7 @@ public class CompetitionHandler{
          }
          //seniorButterfly
          for (Competitor competitor : seniorButterfly){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -160,10 +162,10 @@ public class CompetitionHandler{
          }
       
       //JUNIOR RESULTS
-      //print "junior: "
+      System.out.println("Junior " + discipline + " results: ");
          //juniorBackCrawl
          for (Competitor competitor : juniorBackCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -177,7 +179,7 @@ public class CompetitionHandler{
          }
          //juniorCrawl
          for (Competitor competitor : juniorCrawl){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -191,7 +193,7 @@ public class CompetitionHandler{
          }
          //juniorBreast
          for (Competitor competitor : juniorBreast){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -205,7 +207,7 @@ public class CompetitionHandler{
          }
          //juniorButterfly
          for (Competitor competitor : juniorButterfly){
-            LocalTime result = LocalTime.parse(competitor.getResult());
+            LocalTime result = LocalTime.parse(competitor.getResult().toString());
             if(result != null) {
                System.out.println(competitor.getName()); //name
                System.out.println("Competition result: " + result);
@@ -218,7 +220,7 @@ public class CompetitionHandler{
             }
          }
       }
-   }
+   } // END OF GETRESULTS METHOD
 
 //top 5 swimmers in each swim discipline and age group
    public void TopFive(){
