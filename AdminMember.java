@@ -48,11 +48,11 @@ public class AdminMember extends Member{
    public void membershipAgeType() {
       int age = ageCalculator(); // to calculate the age first. 
       if (age < 18) {
-         this.membershipType = "Junior";
+         this.membershipAgeType = "Junior";
       } else if (age >= 18 && age <= 60) {
-         this.membershipType = "Senior";
+         this.membershipAgeType = "Senior";
       } else if (age > 60) {
-         this.membershipType = "overSixtyFee";
+         this.membershipAgeType = "overSixtyFee";
       }
    }
    
