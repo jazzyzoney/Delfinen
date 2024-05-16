@@ -8,7 +8,14 @@ import java.util.UUID;
 public class AdminMember extends Member{
 
    public ArrayList<Member> clubMembers = new ArrayList<>(); //liste over klubmedlemmer
- 
+ /*// Tilføjer elementer til listen
+        liste.add("æble");
+        liste.add("banan");
+        liste.add("citron");
+        liste.add("appelsin");
+
+        // Udskriver den oprindelige liste
+        System.out.println("Oprindelig liste: " + liste);*/
    /*public AdminMember(String memberID, String name, LocalDate birthDate, int phoneNumber, String membershipType, boolean active) {
       this.memberId = memberId;
       this.name = name;
@@ -51,12 +58,36 @@ public class AdminMember extends Member{
    
    
    public void removeClubMembers() {
-   
+   /*// Tilføjer elementer til listen
+        liste.add("æble");
+        liste.add("banan");
+        liste.add("citron");
+        liste.add("appelsin");
+
+        // Udskriver den oprindelige liste
+        System.out.println("Oprindelig liste: " + liste);
+
+        // Sletter et element fra listen ved hjælp af remove metoden
+        liste.remove("citron"); // Fjerner elementet "citron"
+
+        // Udskriver listen efter sletning
+        System.out.println("Efter sletning: " + liste);/*
    
    
    }
    public void editClubMembers(){
-   
+   /* Tilføjer elementer til listen
+        liste.add("æble");
+        liste.add("banan");
+        liste.add("citron");
+        liste.add("appelsin");
+
+        // Udskriver den oprindelige liste
+        System.out.println("Oprindelig liste: " + liste);
+
+        // Redigerer et element i listen ved hjælp af set metoden
+        liste.set(2, "jordbær"); // Ændrer "citron" til "jordbær"*/
+
    
    }
    
@@ -67,7 +98,6 @@ public class AdminMember extends Member{
 }
 
 
-//Edit, delete og  find member metode. 
 
 
 

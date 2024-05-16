@@ -1,9 +1,12 @@
 //Author  Caroline B. 
-
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Member extends Person {
-
+ 
    public String memberId;
    public boolean isWoman = true;
    public boolean active;

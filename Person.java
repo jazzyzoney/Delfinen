@@ -28,7 +28,7 @@ public String getPhoneNumber(){
    public LocalDate getBirthDate(){
       return birthDate;
    }
-//setter 
+//setter  
 
 public void setName(String name){
      this.name = name;
