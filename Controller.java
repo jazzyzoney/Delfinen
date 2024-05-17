@@ -9,6 +9,7 @@ private static Scanner scanner = new Scanner(System.in);
 public static void controller(){
 
 Member member = new Member();
+Accounting accounting = new Accounting();
 
     System.out.println("Member name:");
     member.setName(scanner.nextLine());
@@ -25,6 +26,13 @@ Member member = new Member();
 
 }
    
+//Accounting
+   
+   
+a) Create new invoice
+b) Search member
+c) Set / reset payment status
+d) Show / print invoice  
     
    }
 

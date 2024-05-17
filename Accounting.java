@@ -1,26 +1,19 @@
 //Author Solvej T.
-//Accounting 
-//1)Lists fees
-//2)Creates invoice with membershipTypeFee
-//3)Adds invoice to Invoices ArrayList
-//4)Sets/resets payment status via ArrayList
-//5)Deletes invoices
-//6)Prints invoices
-
 
 import java.util.List;
 import java.util.ArrayList; //to create list of invoices
-import java.time.LocalDate; //to set invoice dueDATE
+import java.time.LocalDate; //to set invoice date
 
 public class Accounting{
   
-    private final List<Invoice> invoices = new ArrayList<>();
-    
+    private final ArrayList<Invoice> invoices = new ArrayList<>();
+ 
     private int juniorFee = 1000; //cost of membership for junior swimmer
     private int seniorFee = 1600; //cost of membership for +18 swimmer
     private int overSixtyFee = 1200; //Cost of membership for +60 swimmers
-    private int passiveFee = 500; // cost of passive membership   
-   
+    private int passiveFee = 500; // cost of passive membership 
+    private int invoiceNumber = 0; 
+       
     public Accounting(int juniorFee, int seniorFee, int overSixtyFee, int passiveFee){
       this.juniorFee = juniorFee;
       this.seniorFee = seniorFee;
@@ -28,36 +21,43 @@ public class Accounting{
       this.passiveFee = passiveFee;
     }
     
-    public Accounting(){
-    //blank constructor
+    public int getJuniorFee() {
+        return juniorFee;
     }
-     
-    public int createInvoice(String membershipType, paymentStatus status, int invoiceNumber){
-      var invoice = new Invoice(memberId, fee, paymentStatus, int invoiceNumber, String membershipType);
-      invoices.add(invoice);
-      invoices.edit(invoice);
-      invoiceNumber++;
-      int fee = getMembershipFee(membershipType);
-         System.out.println("Invoice: " + invoiceNumber + fee); //print invoice    
-   } 
-   
-     public boolean removeInvoice(Invoice invoice){
-      if (invoices.contains(invoice)) {
-         invoices.remove(invoice);
-         return true;
-      } else {
-         return false;   
-      }
-      }
 
-    public void printInvoices(){ //print invoices? Or create option for printing active invoices?
-      for(var Invoice : invoices){
-        invoice.print();
-      }
+    public int getSeniorFee() {
+        return seniorFee;
     }
-   
-    public int getMembershipFee(Member member){ //calls membershipType from adminMember Class.       
-      Invoice invoice = new Invoice();          //Connects type to fee
+
+    public int getOverSixtyFee() {
+        return overSixtyFee;
+    }
+
+    public int getPassiveFee() {
+        return passiveFee;
+    }
+    
+     
+    public int createInvoice(AdminMember adminMember, Invoice invoice){
+      String memberId = adminMember.getMemberId();
+      LocalDate invoiceDate = invoice.getLocalDate.now();
+      //duedate
+      int fee = getMembershipTypeFee(membershipType);
+      Invoice invoice = new Invoice(fee, invoiceNumber, memberId, invoiceDate, dueDate);//initalize object only include attributes not types. "constructor contract" in invoice class
+      invoices.add(invoice);
+      invoiceNumber++;
+               System.out.println("Invoice: " + invoiceNumber + memberId + fee + dueDate); //print invoice    
+   } 
+    
+    public String getMemberId(AdminMember adminMember){ 
+      return memberId;
+    }
+    
+    public LocalDate getInvoiceDate(Invoice invoice){
+         return invoiceDate;
+    }
+    
+    public int getMembershipTypeFee(AdminMember adminMember){ //calls membershipType from adminMember Class to specific fee.        
       int fee;
       if(!member.isActive()){
       return passiveFee;
@@ -65,13 +65,13 @@ public class Accounting{
       }else {
        switch (membershipType){
          case "Junior": 
-         break;
-           return Invoice.getJuniorFee();    
+           return juniorFee();
+             break;    
          case "Senior":
-            return Invoice.getSeniorFee();
+            return seniorFee();
             break;
          case "Over sixty!":
-            return Invoice.getOverSixtyFee();
+            return overSixtyFee();
             break;
          default: 
             System.out.println("Unknown membership type: " + membershipType);
@@ -80,50 +80,46 @@ public class Accounting{
       }
    }
    }
-      public void invoiceDate(){
-         return invoiceDate();
-   }
 
-      public void dueDate(){
-         return dueDate();
-   }
-
-      public void invoiceNumber(){
-        Invoice inNBR = new Invoice();
-         int inNBR = inNBR.getInvoiceNumber(); 
-    }
-
-      //need to elaborate with if/else statments?
-      public void payStatus(PaymentStatus paymentStatus){ //method to select pay status 
-         switch(paymentStatus){                          
-            case PAID:
-               System.out.println("Paid");
-               break;
-            case UNPAID:
-               System.out.println("Unpaid");
-               break;
-            case OVERDUE:
-               System.out.println("Overdue");
-               break;
-            case NEWMEMBER:
-               System.out.println("New member");
-               break; 
-             default: 
-                System.out.println("Invalid payment status");
-             }
-           }      
+      List<invoices> findOverdueInvoices() {
+         List<invoices>allInvoices = findInvoices();
+            New ArrayList overdue<>
+            allInvoices.forEach{
+            if(overDue){
+            overdueList.add
+            }
+            }
+ 
+ 
+       //public List<Invoice> findOverdueInvoices() { 
+        //List<invoice> overdues = new ArrayList<>(); //// Stores overdue invoices
+         //for (Invoice invoice : invoices) { // Code to be executed FOR EACH (loop) element
+            //if (invoice.isOverdue()){ //// Checks if invoice is overdue
+             //  overdues.add(invoice);
+        //}
+       //}
+        // return overdues;
+   // }   
       
-      public static ArrayList<invoices> overdueInvoice() { //method to find invoices in arrears 
-      ArrayList<Invoice> OverdueInvoice = new ArrayList<>();
-         for (Invoice invoice : overdueInvoice) { // Code to be executed FOR EACH (loop) element
-            if (invoice.status == PaymentStatus.OVERDUE) {
-               overdue.add(invoice);
-        }
-         return overdue;
-        }
-         
+
+       public void printAllInvoices(){
+         for(Invoice invoice : invoices){
+         invoice.print();
+      }
    }
-   }
+      
+      public void printOverdues(){
+        List<Invoice> overdues = findOverdueInvoices();
+        
+        for (Invoice invoice : overdues){
+         invoice.print();
+        }
+     } 
+       
+    }   
+   
+   
+   
    
    
  
