@@ -45,16 +45,18 @@ public class AdminMember extends Member{
 
         
 //This sets the membership type after age
-   public void membershipAgeType() {
+   public String membershipAgeType() {
       int age = ageCalculator(); // to calculate the age first. 
       if (age < 18) {
-         this.membershipAgeType = "Junior";
+         this.membershipType = "Junior";
       } else if (age >= 18 && age <= 60) {
-         this.membershipAgeType = "Senior";
+         this.membershipType = "Senior";
       } else if (age > 60) {
-         this.membershipAgeType = "overSixtyFee";
+         this.membershipType = "overSixtyFee";
       }
+   return membershipType; 
    }
+   
    
    
    public void removeClubMembers() {
