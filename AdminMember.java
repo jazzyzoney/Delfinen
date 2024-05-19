@@ -1,5 +1,5 @@
 //Author Caroline B.
-import java.util.ArrayList;
+/* import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -8,13 +8,13 @@ import java.util.UUID;
 public class AdminMember extends Member {
 
    public ArrayList<Member> clubMembers = new ArrayList<>(); //liste over klubmedlemmer
- /* Tilføjer elementer til listen
+  Tilføjer elementer til listen
         liste.add("æble");
         liste.add("banan");
         liste.add("citron");
         liste.add("appelsin");
 
-       */
+       
    
    public void showClubMembers(){ //for at printe listen med klubbens medlemmer 
       for(Member member : clubMembers){
@@ -83,5 +83,5 @@ public class AdminMember extends Member {
 
 
 
-try - catch  
+
 */
