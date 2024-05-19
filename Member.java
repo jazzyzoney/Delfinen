@@ -23,6 +23,7 @@ public class Member {
    private String phoneNumber;//console input - husk try-catch til antal cifre. Forlang 8.
    private String memberId; // calculated 
    private LocalDate birthDate; //console input
+   private int  age; // calculated
    private AgeType ageType; //calculated from birthDate in constructor
    private SwimType swimType; //console input
    private boolean activeMembership; //console input
@@ -36,6 +37,7 @@ public class Member {
         this.phoneNumber=phoneNumber;
         this.memberId= createId();;
         this.birthDate = birthDate;
+        this.age = age;
         this.ageType = ageType; 
         this.activeMembership = activeMembership;
         this.registrationDate = LocalDate.now().format(DATE_FORMATTER);
@@ -56,6 +58,11 @@ public class Member {
       return Period.between(getBirthDate(),today).getYears();
       } 
       
+      public void ageCalculator() {
+        LocalDate today = LocalDate.now();
+        age = Period.between(birthDate, today).getYears();
+        
+        }
    /*    public void format() {
    
    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -76,6 +83,9 @@ public class Member {
 public void print() {
         System.out.println("Name: " + name);
         System.out.println("Birth Date: " + birthDate);
+        
+       
+        
         System.out.println("Active Membership: " + activeMembership);
     }
 
@@ -92,6 +102,11 @@ public String getPhoneNumber(){
 } 
    public LocalDate getBirthDate(){
       return birthDate;
+   }
+   
+   public int getAge(){
+   return age;
+   
    }
 
    public String getMemberId(){
@@ -112,9 +127,9 @@ public String getPhoneNumber(){
         return LocalDate.now().format(DATE_FORMATTER);
     }
  
-   /*public SwimType getSwimType(){ NB!!!!
+   public SwimType getSwimType(){
       return swimType;
-      }*/
+      }
    
     
    //Setters
@@ -139,11 +154,12 @@ public void setBirthDate(String birthDate){
    /*public void setFormatted(String formatted){
       this.formattedBirthDate = formattedBirthDate;
    }*/
-   /*public void setSwimType(SwimType swimType){
-      this.swimType = swimType;*/
+   
+   public void setSwimType(SwimType swimType){
+      this.swimType = swimType;
    }
    
-   
+  } 
 
   
 
