@@ -139,13 +139,13 @@ public void setBirthDate(String birthDate){
    /*public void setFormatted(String formatted){
       this.formattedBirthDate = formattedBirthDate;
    }*/
-   public void setSwimType(SwimType swimType){
-      this.swimType = swimType;
+   /*public void setSwimType(SwimType swimType){
+      this.swimType = swimType;*/
    }
    
    
 
-  }
+  
 
 
 
