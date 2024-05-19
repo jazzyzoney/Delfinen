@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-public class Competitor extends Member{
    
-   ArrayList<String> disciplines = new ArrayList<>();
-   String coach;
+public class Competitor {
+   private Member member; 
+   private ArrayList<String> disciplines = new ArrayList<>();
+   private String coach;
    int rank;
    LocalDateTime date;
    LocalTime result;
@@ -15,9 +15,25 @@ public class Competitor extends Member{
    LocalDateTime trainingDate;
    LocalTime trainingResult;
    
+   public Competitor(Member member, String coach, int rank) {
+      this.member = member;
+      this.disciplines.addAll(disciplines);
+      this.coach = coach;
+      this.rank = rank;
+   }
+   
    //getter
+   public Member getMember(){
+      return member;
+   }
+   public String getName(){
+      return getMember().getName();
+   }
+   public String getMemberId(){
+      return getMember().getMemberId();
+   }
    public ArrayList<String> getDisciplines(){
-      return disciplines;
+      return new ArrayList<> (disciplines);
    }
    public String getCoach(){
       return coach;
