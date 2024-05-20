@@ -11,6 +11,73 @@ public static void controller(){
 
 Accounting accounting = new Accounting();
 
+controllerAccountant
+  
+Scanner invoiceScanner = new Scanner(System.in);
+System.out.print("Enter member name: ");
+String name = scanner.nextLine();
+//boolean isActive = adminMember.isActive(memberID);
+
+LocalDate invoiceDate = LocalDate.now();
+int fee = getMembershipTypeFee(membershipType, isActive);
+
+LocalDate dueDate = invoiceDate.plusDays(30);
+
+Invoice invoice = new Invoice(fee, invoiceNumber, memberId, invoieDate, dueDate);
+invoices.add(invoice);
+invoiceNumber++;
+
+System.out.println("Invoice Number: " + invoiceNumber);
+        System.out.println("Member Name: " + name); 
+        System.out.println("Member ID: " + memberId);
+        System.out.println("Due Date: " + dueDate);
+        System.out.println("Please note that payment must be made within 30 days from " + accounting.getInvoiceDate);
+        System.out.println("Membership Fee: " + fee);
+        return invoice;
+
+
+
+     public void viewOverdueFees() {
+        Scanner overdueFeesScanner = new Scanner(System.in); 
+        System.out.println("Enter a search option):");
+        System.out.println("1. All overdue fees");
+        System.out.println("2. Overdue fees for a specific member ID (enter ID below)");
+        System.out.print("Enter your choice (1 or 2): ");
+        int choice = scanner.nextInt();
+
+        List<Invoice> overdueInvoices;
+        if (choice == 1) {
+            overdueInvoices = findOverdueInvoices(); // Find all overdue invoices
+        } else if (choice == 2) {
+            System.out.print("Enter member ID: ");
+            String memberId = scanner.nextLine();
+            scanner.nextLine(); 
+            overdueInvoices = findOverdueInvoices(memberId); // Find overdue for specific member (assuming a method exists)
+        } else {
+            System.out.println("Invalid choice. Please try again.");
+            return; // Exit if invalid choice
+        }
+
+        if (overdueInvoices.isEmpty()) {
+            System.out.println("No overdue fees found.");
+        } else {
+            System.out.println("List of Overdue Fees:");
+            for (Invoice invoice : overdueInvoices) {
+                System.out.println("Invoice Number: " + invoice.getInvoiceNumber());
+                System.out.println("Member ID: " + invoice.getMemberId());
+                System.out.println("Due Date: " + invoice.getDueDate());
+                System.out.println("Membership Fee: " + invoice.getFee());
+                System.out.println(" ");             }
+        }
+    }
+
+// Set / reset payment status
+
+
+
+   //5) Payment method ("Please choose your payment method");
+   //6) Payment information ("Please enter your account details"); 
+   
 
     
 
