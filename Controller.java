@@ -8,21 +8,10 @@ private static Scanner scanner = new Scanner(System.in);
 
 public static void controller(){
 
-Member member = new Member();
+
 Accounting accounting = new Accounting();
 
-    System.out.println("Member name:");
-    member.setName(scanner.nextLine());
-    System.out.println(" Phonenumber:");
-    member.setPhoneNumber(scanner.nextLine()); // evt. skrifte tili stringe, da tallet starter med 0.
-    System.out.println("Member birthDate:");
-    member.setBirthDate(scanner.nextLine());
-    System.out.println(member.getName());
-    System.out.println(member.getMemberId());
-    System.out.println(member.getPhoneNumber());
-    System.out.println(member.getBirthDate());
-    System.out.println(member.getAge());
-    System.out.println(member.getMembershipType());
+
     
 
 

@@ -1,5 +1,6 @@
 //jasmin
 import java.util.ArrayList;
+import java.util.LinkedList; 
 import java.util.Collections;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
@@ -31,7 +32,7 @@ public class CompetitionHandler{
    
    public void addMemberToDiscipline(Competitor competitor){
       //adding junior swimmers to disciplines
-      if (competitor.getAge() < 18){
+      if (competitor.getMember().getAge() < 18){
          for(String discipline : competitor.getDisciplines()){
             switch (discipline){
                case "Back Crawl":
@@ -85,7 +86,7 @@ public class CompetitionHandler{
          case 2:
             competitor.setResult(result.toString());
             //set date, rank...?
-            addMemberToDiscipline(competitor); //will def give problems since it only adds the result to the swimmer and not to specific disciplines
+            addMemberToDiscipline(competitor); //might give problems
             System.out.println("Competition result registered for: " + competitor.getMemberId());
             break;
          default:
@@ -93,7 +94,7 @@ public class CompetitionHandler{
       }
    }
    
-   public void printResult(Competitor competitor) { //helper method to prevent repetitive code
+   public void printResult(Competitor competitor) { //helper method to prevent repetitive code in getResults()
       LocalTime result = LocalTime.parse(competitor.getResult().toString());
       if(result != null) {
          System.out.println(competitor.getName()); //competitor name
@@ -114,7 +115,7 @@ public class CompetitionHandler{
       int seniorDiscipline = discipline;
       int juniorDiscipline = discipline;
       
-      //loop over hver arrayliste og printe 
+      //loop over every arraylist and print 
       switch (seniorDiscipline){
          //SENIOR RESULTS
          //seniorBackCrawl
@@ -182,18 +183,60 @@ public class CompetitionHandler{
 
 //top 5 swimmers in each swim discipline and age group
    public void TopFive(){
-      //loop over hver arrayliste, sortere efter tid og printe
-      // ArrayList<Competitor> result = new ArrayList<>() læs op på linked lists og brug det i stedet for arraylist for at kunne rykke nemmere rundt på elementerne
-      // for (Competitor competitor : seniorCrawl) {
-      //   competitor.getTrainingResult()
-      //   for (Competitor otherCompetitor : result) {
-      //     if(competitor.getTrainingResult().isBefore(otherCompetitor.getTrainingResult()) {
-      //       competitor --> overtake otherCompetitors place in result arraylist
-      //     } 
-      //   }
-      // }
-   } 
-}
+      //loop over every arraylist, sort by tid and print
+   
+      for (int discipline = 1; discipline <= 4; discipline++) {
+      //senior and junior competitors with training results
+         ArrayList<Competitor> seniorTopList = new ArrayList<>();
+         ArrayList<Competitor> juniorTopList = new ArrayList<>();
+      
+      //loop through senior and junior lists for the current discipline
+         for (Competitor competitor : seniorBackCrawl) {
+            if (competitor.getTrainingResult() != null) {
+               seniorTopList.add(competitor);
+            }
+         }
+         for (Competitor competitor : juniorBackCrawl) {
+            if (competitor.getTrainingResult() != null) {
+               juniorTopList.add(competitor);
+            }
+         }
+         //ADD REST OF DISCIPLINES
+      
+      //sort both lists based on training results (lowest time is best)
+         Collections.sort(seniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));
+         Collections.sort(juniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));
+      
+      //print top 5 for Seniors
+         System.out.println("Senior " + getDisciplineName(discipline) + " results:");
+         for (int i = 0; i < Math.min(5, seniorTopList.size()); i++) {
+            printResult(seniorTopList.get(i));
+         }
+      
+      //print top 5 for Juniors
+         System.out.println("Junior " + getDisciplineName(discipline) + " results:");
+         for (int i = 0; i < Math.min(5, juniorTopList.size()); i++) {
+            printResult(juniorTopList.get(i));
+         }
+      }
+   }
+
+//helper method to convert discipline number to discipline name
+   private String getDisciplineName(int discipline) {
+      switch (discipline) {
+         case 1:
+            return "Back Crawl";
+         case 2:
+            return "Crawl";
+         case 3:
+            return "Breast";
+         case 4:
+            return "Butterfly";
+         default:
+            return "Unknown";
+      }
+   }  
+} 
 
 /*
 tested code in main:
