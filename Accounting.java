@@ -37,19 +37,24 @@ public class Accounting{
         return passiveFee;
     }
     
-     
-    public int createInvoice(AdminMember adminMember, Invoice invoice){
-      String memberId = adminMember.getMemberId();
-      LocalDate invoiceDate = invoice.getLocalDate.now();
-      //duedate
-      int fee = getMembershipTypeFee(membershipType);
+    public int createInvoice(Member member){
+      String memberId = member.getMemberId();
+      LocalDate invoiceDate = LocalDate.now();
+      int fee = getMembershipTypeFee(member);
+      
+      LocalDate dueDate = invoiceDate.plusDays(30);
+      
       Invoice invoice = new Invoice(fee, invoiceNumber, memberId, invoiceDate, dueDate);//initalize object only include attributes not types. "constructor contract" in invoice class
       invoices.add(invoice);
       invoiceNumber++;
-               System.out.println("Invoice: " + invoiceNumber + memberId + fee + dueDate); //print invoice    
+               System.out.println("Invoice number: " + invoiceNumber);
+               System.out.println("Date of invoice: " + invoiceDate);
+               System.out.println("MemberId: " + memberId);
+               System.out.println("Duedate: " + invoice.getInvoiceDueDate); 
+               System.out.println("Membership fee: " + fee);              
    } 
     
-    public String getMemberId(AdminMember adminMember){ 
+    public String getMemberId(Member member){ 
       return memberId;
     }
     
@@ -57,21 +62,27 @@ public class Accounting{
          return invoiceDate;
     }
     
-    public int getMembershipTypeFee(AdminMember adminMember){ //calls membershipType from adminMember Class to specific fee.        
+    public LocalDate getDueDate(Invoice invoice){
+         return dueDate;
+    }
+    
+    //private int getAgeTypeFee(Member member){ //calls membershipType from adminMember Class to specific fee.        
+      //String AType = member.getAgeType();
+      
       int fee;
       if(!member.isActive()){
       return passiveFee;
 
-      }else {
+      }//else {
        switch (membershipType){
          case "Junior": 
-           return juniorFee();
+           return juniorFee;
              break;    
          case "Senior":
-            return seniorFee();
+            return seniorFee;
             break;
-         case "Over sixty!":
-            return overSixtyFee();
+         case "Over sixty":
+            return overSixtyFee;
             break;
          default: 
             System.out.println("Unknown membership type: " + membershipType);
@@ -79,31 +90,21 @@ public class Accounting{
             break;
       }
    }
-   }
+   
 
-      List<invoices> findOverdueInvoices() {
-         List<invoices>allInvoices = findInvoices();
-            New ArrayList overdue<>
-            allInvoices.forEach{
-            if(overDue){
-            overdueList.add
-            }
-            }
- 
- 
-       //public List<Invoice> findOverdueInvoices() { 
-        //List<invoice> overdues = new ArrayList<>(); //// Stores overdue invoices
-         //for (Invoice invoice : invoices) { // Code to be executed FOR EACH (loop) element
-            //if (invoice.isOverdue()){ //// Checks if invoice is overdue
-             //  overdues.add(invoice);
-        //}
-       //}
-        // return overdues;
-   // }   
+       public List<Invoice> findOverdueInvoices() { 
+        List<Invoice> overdues = new ArrayList<>(); //// Stores overdue invoices 
+         for (Invoice invoice : invoices) { // Code to be executed FOR EACH (loop) element
+            if (invoice.isOverdue()){ //// Checks if invoice is overdue
+            overdues.add(invoice);
+        }
+       }
+         return overdues;
+   }   
       
 
        public void printAllInvoices(){
-         for(Invoice invoice : invoices){
+         for (Invoice invoice : invoices){
          invoice.print();
       }
    }
@@ -113,11 +114,10 @@ public class Accounting{
         
         for (Invoice invoice : overdues){
          invoice.print();
-        }
-     } 
        
-    }   
-   
+     } 
+ }
+ } 
    
    
    
