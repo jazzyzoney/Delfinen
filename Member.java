@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 enum AgeType {
-    JUNIOR, SENIOR, SENIORMINUS25
+    JUNIOR, SENIOR, OVERSIXTY
 }
 
 enum SwimType {
@@ -75,7 +75,7 @@ public class Member {
       if (age < 18) {
           return AgeType.JUNIOR;
       } else if (age >= 60) {
-          return AgeType.SENIORMINUS25;
+          return AgeType.OVERSIXTY;
       } else {
           return AgeType.SENIOR;
       }
