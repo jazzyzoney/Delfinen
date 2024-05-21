@@ -27,7 +27,7 @@ public class Member {
    private AgeType ageType; //calculated from birthDate in constructor
    private SwimType swimType; //console input
    private boolean activeMembership; //console input
-   private String registrationDate; //calculated from LocalDate.now() in constructor
+   //private String registrationDate; //calculated from LocalDate.now() in constructor
    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     
     
@@ -35,12 +35,12 @@ public class Member {
     public Member(String name, String phoneNumber,String memberId, LocalDate birthDate, boolean activeMembership,AgeType ageType,String registrationDate) {
         this.name = name;
         this.phoneNumber=phoneNumber;
-        this.memberId= createId();;
+        this.memberId= createId();
         this.birthDate = birthDate;
         this.age = age;
         this.ageType = ageType; 
         this.activeMembership = activeMembership;
-        this.registrationDate = LocalDate.now().format(DATE_FORMATTER);
+        //this.registrationDate = LocalDate.now().format(DATE_FORMATTER);
        /* this.formattedBirthDate = birthDate.format(DATE_FORMATTER);
         */
         }
