@@ -11,7 +11,7 @@ public class Controller {
    Scanner scanner = new Scanner(System.in);
    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");   
    MembersDatabase membersDatabase = new MembersDatabase();
-   //membersDatabase.generateSomeMembers();
+   membersDatabase.generateSomeMembers();
       
      
       do {

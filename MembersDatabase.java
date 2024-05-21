@@ -25,6 +25,7 @@ public class MembersDatabase {
 }
 
      public void printMemberInfo(Member member) {
+        System.out.println("*********************************************************");
         System.out.println("Member Name: " + member.name);
         System.out.println("Phonenumber: " + member.getPhoneNumber());
         System.out.println("MemberID: " + member.getMemberId());
@@ -34,23 +35,23 @@ public class MembersDatabase {
         System.out.println("Swim type: " + member.getSwimType());
         System.out.println("Aktive membership?: " + (member.getActiveMembership() ? "Ja" : "Nej"));
         System.out.println("Registrations date: " + member.getRegistrationDate());
-      
+        System.out.println("*********************************************************");
 
      }
  
-/* public void generateSomeMembers(){
-    members.add(new Member("John Doe", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("Jane Doe", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("John Smith", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("Jane Smith", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("John Johnson", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("Jane Johnson", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("John Jackson", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("Jane Jackson", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("John Jensen", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
-    members.add(new Member("Jane Jensen", "12345678", LocalDate.of(2000, 1, 1), true, AgeType.JUNIOR));
+public void generateSomeMembers(){
+    members.add(new Member("John Doe", "12345678", LocalDate.of(2012, 1, 1), SwimType.COMPETITIVE, true));
+    System.out.println("***********************************************************************************");
+    members.add(new Member("Jane Doe", "12345678", LocalDate.of(1945,1, 11),SwimType.COMPETITIVE, true));
+    members.add(new Member("John Smith", "12345678", LocalDate.of(1956,1, 12),SwimType.COMPETITIVE, true));
+    members.add(new Member("James Smith", "12345678", LocalDate.of(1967,8, 12),SwimType.COMPETITIVE, true));
+    members.add(new Member("Johan Johnson", "12345678", LocalDate.of(2021, 10, 11),SwimType.COMPETITIVE, true));
+    members.add(new Member("Johanne Johnson", "12345678", LocalDate.of(1999, 1, 10),SwimType.COMPETITIVE, true));
+    members.add(new Member("Jo Jackson", "12345678", LocalDate.of(2010, 07, 1),SwimType.COMPETITIVE, true));
+    members.add(new Member("Jan Jackson", "12345678", LocalDate.of(2011,06, 1),SwimType.COMPETITIVE, true));
+    members.add(new Member("Jojo Jensen", "12345678", LocalDate.of(1867, 04, 1), SwimType.COMPETITIVE,true));
+    members.add(new Member("Jaja Jensen", "12345678", LocalDate.of(2000, 1, 1), SwimType.COMPETITIVE, true));
 }
-*/
  
  
  }
