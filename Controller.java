@@ -4,78 +4,74 @@ import java.util.Scanner;
 
 public class Controller {
 
-public class Main {
+     
+   private static void generateSomeMembers(MembersDatabase membersDatabase){   
+   //membersDatabase.addMember
+   }
 
-
-    public static void main(String[] args) {
-        MembersDatabase membersDatabase = new MembersDatabase();
-        generateSomeMembers(membersDatabase);
-
-        userInputMenu(membersDatabase);
-    }
-
-    private static void userInputMenu( MembersDatabase membersDatabase) {
-        Scanner scanner = new Scanner(System.in);
-        int option;
-}
+   private static void userInputMenu( MembersDatabase membersDatabase) {
+      Scanner scanner = new Scanner(System.in);
+      //int option = 0;
+   }
 
    private static Scanner scanner = new Scanner(System.in);
 
    public static void controller(){
    
-   do {
-            System.out.println();
-            System.out.println("Welcome to the Swimming Club Management System!");
-            System.out.println("Please choose an option:");
-            System.out.println("*************************************************");
-            System.out.println("1. Insert a new member");
-            System.out.println("2. Update a members swimming time");
-            System.out.println("3. Register a payment");
-            System.out.println("4. Print all members");
-            System.out.println("5. Print members with outstanding balance");
-            System.out.println("6. Print top 5 fastest ");
-            System.out.println("7. Print top 5 fastest ");
-            System.out.println("8. Print top 5 fastest");
-            System.out.println("10. Exit");
-            System.out.println("*************************************************");
-
-            option = scanner.nextInt();
-            
-            switch(option){
-                case 1:
-                    System.out.println("Insert a new member");
-                    break;
-                case 2:
-                    System.out.println("Update a members swimming time");
-                    break;
-                case 3:
-                    System.out.println("Register a payment");
-                    break;
-                case 4:
-                    System.out.println("Print all members");
-                    membersDatabase.printAllMembers();
-                    break;
-                case 5:
-                    System.out.println("Print members with outstanding balance");
-                    membersDatabase.printMembersWithBalance();
-                    break;
-                case 6:
-                    System.out.println("Print top 5 ");
-                    break;
-                case 7:
-                    System.out.println("Print top 5 ");
-                    break;
-                case 8:
-                    System.out.println("Print top 5 ");
-                    break;
-                case 10:
-                    System.out.println("Exit");
-                    break;
-            }
-        } while (option != 10);
-    }
-
-    private static void generateSomeMembers(MembersDatabase membersDatabase){   
-   //membersDatabase.addMember
+      MembersDatabase membersDatabase = new MembersDatabase();
+      generateSomeMembers(membersDatabase);
+   
+      userInputMenu(membersDatabase);
+   
+      do {
+         System.out.println();
+         System.out.println("Welcome to the Swimming Club Management System!/n");
+         System.out.println("Please choose an option:");
+         System.out.println("*************************************************");
+         //Chairman
+         System.out.println("1. Register new member");
+         System.out.println("2. Print all members");
+         //Accountant
+         System.out.println("3. Create invoice");
+         System.out.println("4. Print members in arrears");
+         //Coach
+         System.out.println("5. Register result");
+         System.out.println("6. Print top five swimmers/n");
+         System.out.println("7. Exit");
+         System.out.println("*************************************************");
+         
+         int option = 0;
+         option = scanner.nextInt();
+         
+         switch(option){
+            //Chairman
+            case 1:
+               System.out.println("");
+               break;
+            case 2:
+               System.out.println("Update a members swimming time");
+               break;
+               
+            //Accountant
+            case 3:
+               System.out.println("Register a payment");
+               break;
+            case 4:
+               System.out.println("");
+               break;
+               
+            //Coach 
+            case 5:
+               System.out.println("Update a members swimming time");
+               break;
+            case 6:
+               System.out.println("Update a members swimming time");
+               break;
+               
+            case 7:
+               System.out.println("Exit");
+               break;
+         }
+      } while (true);
    }
-   }
+}
