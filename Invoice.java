@@ -1,18 +1,25 @@
 //Solvej (author)
-//Invoice class includes payment status, invoice date and due date  
+ 
 import java.time.LocalDate; 
 
 public class Invoice {
 
    private LocalDate invoiceDate = LocalDate.now();
-   private LocalDate dueDate = invoiceDate.plusDays(30);
-   private boolean isPaid = false;
- 
-   public Invoice(LocalDate invoiceDate, LocalDate dueDate, boolean paid){
+   private LocalDate dueDate = invoiceDate.plusDays(2);
+   private boolean isPaid;
+   private int invoiceNumber;
+   private int fee = 0;
+   private String memberId; 
+   
+   
+   public Invoice(LocalDate invoiceDate, LocalDate dueDate, int invoiceNumber, int fee, String memberId, boolean isPaid){
    this.invoiceDate = invoiceDate;
    this.dueDate = dueDate;
+   this.fee = fee;
+   this.invoiceNumber = invoiceNumber;
+   this.memberId = memberId;
    this.isPaid = isPaid;
-
+   
        }   
         
        public LocalDate getInvoiceDate(){
@@ -32,15 +39,15 @@ public class Invoice {
      }
      
  
-     public Boolean isOverdue(){  // method
-      LocalDate today = LocalDate.now(); // find localdate method .now
+     public Boolean isOverdue(){  
+      LocalDate today = LocalDate.now(); 
        if (today.isAfter(dueDate) && isPaid == false){ //if today is after the due date of the object AND it is NOT PAID YET
        return true; // then returns true. Because the question is, is it overdue?
        }
        return false;
      }   
-     
-     
+    
+      
 }
        
        
