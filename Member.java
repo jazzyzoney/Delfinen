@@ -7,23 +7,7 @@ import java.util.UUID;
 
 enum AgeType {
     JUNIOR, SENIOR, OVERSIXTY
-
 }
-/*enum AgeType {
-    JUNIOR("Under 18 years"),
-    SENIOR("Over 18 years "),
-    OVERSIXTY("Over 60 years");
-
-    private final String description;
-
-    AgeType(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-}*/
 
 enum SwimType {
     COMPETITIVE, NONCOMPETITIVE
@@ -45,9 +29,8 @@ public class Member {
    private boolean activeMembership; //console input
    private String registrationDate; //calculated from LocalDate.now() in constructor
    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-   //private String formattedBirthDate; 
+   
     
-
     //constructor
     public Member(String name, String phoneNumber, LocalDate birthDate, SwimType swimType, boolean activeMembership) {
         this.name = name;
@@ -60,9 +43,6 @@ public class Member {
         this.activeMembership = activeMembership;
         this.registrationDate = LocalDate.now().format(DATE_FORMATTER);
         
-        //this.formattedBirthDate = birthDate.format(DATE_FORMATTER);
-        
-
         }
    
  //This methods is used to create a random MemberId to a  new member of the swim club 
@@ -72,25 +52,14 @@ public class Member {
       return fullAsString.substring(0,8);//generates a unique 8-character ID using UUIDs.
    }
    
-/*This calculates the ageType from the birthDate. 
-      private int calculateAge(LocalDate birthDate) {
-      LocalDate today = LocalDate.now();
-      return Period.between(getBirthDate(),today).getYears();
-      } */
-      
       public int ageCalculator() {
         LocalDate today = LocalDate.now();
         age = Period.between(getBirthDate(), today).getYears();
-        return age;        }
+        return age;       
+   }
                 
-  /*public void format() {
-  DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-  format = birthDate.format(format);
-}*/
-      
-      // This method calculates the ageType from the birthDate
   
-  
+  //Calculate the AgeType to show which kind of membershipmember it is.
    private AgeType calculateAgeType() {
       int age = ageCalculator();
       if (age < 18) {
@@ -132,10 +101,6 @@ public String getPhoneNumber(){
   AgeType getAgeType(){
   return ageType;
    }
-  
-  //public String getFormattedBirthDate() {
-       // return formattedBirthDate;
-   // }
     
     //Method to get registration date
    public String getRegistrationDate() {
@@ -165,18 +130,13 @@ public void setBirthDate(String birthDate){
    public void setMemberId(String memberId){
     this.memberId = memberId;
   }
-
-  /* public void setFormatted(String formatted){
-      this.formattedBirthDate = formattedBirthDate;
-   }*/
    
    public void setSwimType(SwimType swimType){
       this.swimType = swimType;
-   }
+  }
    
    
-
- } 
+} 
 
 
 
