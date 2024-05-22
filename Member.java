@@ -17,7 +17,7 @@ enum swimTeam {
 }
 
 public class Member {
-    private String name; // console input
+    public String name; // console input
     private String phoneNumber; // console input - husk try-catch til antal cifre. Forlang 8.
     private String memberId; // calculated 
     private LocalDate birthDate; // console input
