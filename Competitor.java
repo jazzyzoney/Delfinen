@@ -1,40 +1,39 @@
 //jasmin
 import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
    
-public class Competitor {
-   private Member member; 
-   private ArrayList<String> disciplines = new ArrayList<>();
+public class Competitor extends Member {
+   //private ArrayList<String> disciplines = new ArrayList<>();
    private String coach;
    int rank;
    LocalDateTime date;
    LocalTime result;
-    
+   
    LocalDateTime trainingDate;
    LocalTime trainingResult;
    
+   private List<String> disciplines;
+   
    public Competitor(Member member, String coach, int rank) {
-      this.member = member;
-      this.disciplines.addAll(disciplines);
+      super(member.getName(), member.getPhoneNumber(), member.getBirthDate(), member.getSwimType(), member.isActiveMembership());
       this.coach = coach;
       this.rank = rank;
+      this.disciplines = new ArrayList<>();
    }
    
    //getter
-   public Member getMember(){
-      return member;
-   }
    public String getName(){
-      return getMember().getName();
+      return super.getName();
    }
    public String getMemberId(){
-      return getMember().getMemberId();
+      return super.getMemberId();
    }
-   public ArrayList<String> getDisciplines(){
-      return new ArrayList<> (disciplines);
-   }
+   public List<String> getDisciplines() {
+        return disciplines;
+    }
    public String getCoach(){
       return coach;
    }
