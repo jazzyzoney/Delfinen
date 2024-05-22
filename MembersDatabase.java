@@ -41,7 +41,6 @@ public class MembersDatabase {
  
 public void generateSomeMembers(){
     members.add(new Member("John Doe", "12345678", LocalDate.of(2012, 1, 1), SwimType.COMPETITIVE, true));
-    System.out.println("***********************************************************************************");
     members.add(new Member("Jane Doe", "12345678", LocalDate.of(1945,1, 11),SwimType.COMPETITIVE, true));
     members.add(new Member("John Smith", "12345678", LocalDate.of(1956,1, 12),SwimType.COMPETITIVE, true));
     members.add(new Member("James Smith", "12345678", LocalDate.of(1967,8, 12),SwimType.COMPETITIVE, true));
