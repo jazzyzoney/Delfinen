@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
-
+import java.util.List;
 
 public class InvoiceDatabase{
 
@@ -31,18 +31,19 @@ public class InvoiceDatabase{
      }
 
      public void printInvInfo(Invoice invoice) {
+        
+        
         System.out.println("*********************************************************"); 
-        System.out.println("Member Name: " + member.name);
+        System.out.println("Member Name: " + member.name());
         System.out.println("Invoice date: " + invoice.getInvoiceDate());
         System.out.println("Duedate: " + invoice.getDueDate());
         System.out.println("Invoice number: " + invoice.getInvoiceNumber());
-        //System.out.println("Amount due: " + invoice.getFee());
-        //System.out.println("MemberID: " + member.getMemberId());
+        System.out.println("Amount due: " + invoice.getFee());
+        System.out.println("MemberID: " + member.getMemberId());
         System.out.println("Payment: " + invoice.getIsPaid());
         System.out.println("*********************************************************");
         
    }
-   
    //put  in database class
        public List<Invoice> findOverdueInvoices() { 
         List<Invoice> overdues = new ArrayList<>(); //// Stores overdue invoices 

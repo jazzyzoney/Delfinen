@@ -81,11 +81,11 @@ public class Accounting{
   
         public boolean printReceipt(){
                Scanner receiptScan = new Scanner(System.in);
-               if (!printReceipt)   
+               do (!printReceipt)   
                 System.out.println("Would you like to print a receipt? (y/n)");
                 String receiptScan = scanner.nextLine().toLowerCase;
-          }
-            while (userInput.equals("y")) { 
+          
+            }else } (userInput.equals("y")) { 
               System.out.println("Member name: " + name);
               System.out.println("MemberId: " + memberId);
               System.out.println("InvoiceNumber: " + invoiceNumber);
