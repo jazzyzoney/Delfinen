@@ -11,13 +11,18 @@ public class Accounting{
     private int overSixtyFee = 1200; //Cost of membership for +60 swimmers
     private int passiveFee = 500; // cost of passive membership 
     private int invoiceNumber = 0; 
-    
+    private LocalDate invoice;
+   private LocalDate invoiceDate = LocalDate.now();
+   private LocalDate dueDate = invoiceDate.plusDays(2);
        
-    public Accounting(int juniorFee, int seniorFee, int overSixtyFee, int passiveFee){
+    public Accounting(int juniorFee, int seniorFee, int overSixtyFee, int passiveFee, LocalDate invoice){
       this.juniorFee = juniorFee;
       this.seniorFee = seniorFee;
       this.overSixtyFee = overSixtyFee;
       this.passiveFee = passiveFee;
+     this.invoice = invoice;
+     this.invoiceDate=invoiceDate;
+     this.dueDate=dueDate; 
     }
     
     public int getJuniorFee() {
@@ -38,7 +43,7 @@ public class Accounting{
     
     public Invoice createInvoice(Member member){
       //String name = member.getName();
-      LocalDate invoiceDate = invoice.LocalDate.now();
+      LocalDate invoiceDate = LocalDate.now();
       LocalDate dueDate = invoiceDate.plusDays(2); //set it to 2 days to show in presentation
       int fee = getMemberTypeFee(member);
 
