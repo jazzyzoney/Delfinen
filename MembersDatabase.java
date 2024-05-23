@@ -67,7 +67,7 @@ public class MembersDatabase {
       System.out.println("Swim type: " + member.getSwimType());
       System.out.println("Active membership?: " + (member.isActiveMembership() ? "Yes" : "No"));
       System.out.println("Registrations date: " + member.getRegistrationDate());
-      System.out.println("*********************************************************");
+    //  System.out.println("*********************************************************");
       
       if (member instanceof Competitor) {
          Competitor competitor = (Competitor) member;

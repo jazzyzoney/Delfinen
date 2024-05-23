@@ -46,13 +46,16 @@ public class Controller {
          switch (option) {
             // Chairman
             case 1:
-               
+               try {
                System.out.println("Enter first Name and last Name:");
                String name = scanner.nextLine();
             
                System.out.println("Enter phone number (8 numbers):");
                String phoneNumber = scanner.nextLine();
-            
+               
+               if (phoneNumber.length() != 8 || !phoneNumber.matches("\\d+")) {
+                throw new IllegalArgumentException("Phone number must be exactly 8 digits.");
+               }
                System.out.println("Enter birth date (yyyy-MM-dd):");
                String birthDateString = scanner.nextLine();
                LocalDate birthDate = LocalDate.parse(birthDateString, dateFormatter);
@@ -86,6 +89,9 @@ public class Controller {
                membersDatabase.addMember(newMember);
                System.out.println("Member added successfully!");
                membersDatabase.printMemberInfo(newMember);
+               } catch (Exception e) {
+                        System.out.println("An error occurred:Check birthDate format ");
+                    }
                break;
             case 2:
                membersDatabase.printAllMembers();
