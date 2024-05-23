@@ -103,9 +103,9 @@ public class Controller {
             break;
         
         case 4:
-               accounting.printOverdues(){
+               accounting.printOverdues();
                System.out.println(invoice.toString());
-                    break;                                                    
+                   break;                                                    
  
             // Coach
             case 5:
