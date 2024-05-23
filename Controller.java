@@ -96,8 +96,10 @@ public class Controller {
                
                Accounting.createInvoice(member); 
                
+               System.out.println("Would you like to print a receipt? (y/n)");
+               String receiptScan = scanner.nextLine().toLowerCase;
                Accounting.printReceipt();
-                         
+            
             break;
         
         case 4:
