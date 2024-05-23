@@ -2,7 +2,7 @@
  
 import java.time.LocalDate; 
 
-public class Invoice {
+public class Invoice { //invoice contract, model, template
 
    private LocalDate invoiceDate = LocalDate.now();
    private LocalDate dueDate = invoiceDate.plusDays(2);
@@ -10,7 +10,7 @@ public class Invoice {
    private int invoiceNumber;
    private int fee = 0;
    private String memberId; 
-   
+   //add name
    
    public Invoice(LocalDate invoiceDate, LocalDate dueDate, int invoiceNumber, int fee, String memberId, boolean isPaid){
    this.invoiceDate = invoiceDate;
@@ -45,7 +45,7 @@ public class Invoice {
        if(today.isAfter(dueDate) && isPaid == false){
        return true;
        }
-       System.out.println("Not paid")
+       System.out.println("Not paid");
        return false;  
        }          
    }         
