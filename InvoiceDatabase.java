@@ -6,6 +6,10 @@ public class InvoiceDatabase{
 
     private final List<Invoice> invoices = new ArrayList<>();
 
+    public void addInvoices(Invoice invoice){ 
+    invoices.add(invoice);      
+  }
+
     public void generateSomeInvoices(){ 
   } 
   
