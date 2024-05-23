@@ -57,16 +57,12 @@ public class Controller {
                System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
                SwimType swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
             
-               Member newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
-               membersDatabase.addMember(newMember);
-            
-               System.out.println("Member added successfully!");
-            
+               Member newMember;
                if (swimType == SwimType.COMPETITIVE) {
                   System.out.println("Enter coach name:");
                   String coach = scanner.nextLine();
                
-                  System.out.println("Enter disciplines (comma-separated):");
+                  System.out.println("Enter disciplines (Back Crawl, Crawl, Breast, Butterfly)(comma-separated):");
                   String disciplinesInput = scanner.nextLine();
                   String[] disciplinesArray = disciplinesInput.split(",");
                   List<String> disciplines = new ArrayList<>();
@@ -74,14 +70,15 @@ public class Controller {
                      disciplines.add(discipline.trim());
                   }
                
-                  Competitor newCompetitor = new Competitor(newMember, coach, 0);
-                  for (String discipline : disciplines) {
-                     newCompetitor.setDisciplines(discipline);
-                  }
-               
-                  competitionHandler.addMemberToDiscipline(newCompetitor);
+                  newMember = new Competitor(name, phoneNumber, birthDate, swimType, activeMembership, coach, disciplines);
+                  competitionHandler.addMemberToDiscipline((Competitor) newMember);
                   System.out.println("Competitor added successfully!");
+               } else {
+                  newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
                }
+               
+               membersDatabase.addMember(newMember);
+               System.out.println("Member added successfully!");
                membersDatabase.printMemberInfo(newMember);
                break;
             case 2:
@@ -100,12 +97,15 @@ public class Controller {
             case 5:
                System.out.println("Enter member ID:");
                String memberId = scanner.nextLine();
-            
+
+               System.out.println("Enter discipline (Back Crawl, Crawl, Breast, Butterfly):");
+               String discipline = scanner.nextLine();
+
                System.out.println("Enter result type (1: Training, 2: Competition):");
                int resultType = scanner.nextInt();
                scanner.nextLine();  // consume newline
-            
-               System.out.println("Enter result time (mm:ss.SSS):"); //pls work
+
+               System.out.println("Enter result time (mm:ss.SSS):");
                String resultTime = scanner.nextLine();
                LocalTime result = LocalTime.parse(resultTime);
             
@@ -119,16 +119,17 @@ public class Controller {
                }
             
                if (competitor != null) {
-                  competitionHandler.RecordResult(resultType, competitor, result);
+                  competitionHandler.RecordResult(resultType, competitor, result, discipline);
                   System.out.println("Result recorded successfully!");
                } else {
                   System.out.println("Competitor not found!");
                }
                break;
+               
             case 6:
                System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
-               int discipline = scanner.nextInt();
-               competitionHandler.getResults(discipline);
+               int disciplineNumber = scanner.nextInt();
+               competitionHandler.TopFive(disciplineNumber);
                break;
          
             case 7:
