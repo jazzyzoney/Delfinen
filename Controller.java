@@ -89,47 +89,22 @@ public class Controller {
             case 3:
                System.out.println("Register a payment");
                
-               System.out.println("Enter member name:");
-               String name = scanner.nextLine();
+               System.out.println("Enter member ID:");
+               String memberId = scanner.nextLine();
               
                membersDatabase.getMembers();
                
                Accounting.createInvoice(member); 
                
-             //invoiceNumber, invoiceDate, fee, isPaid);
-             //int fee = accounting.getMemberTypeFee(member);       
-        
-            public boolean printReceipt(){
-               if (!printReceipt) 
-                Scanner receiptScan = new Scanner(System.in);  
-                System.out.println("Would you like to print a receipt? (y/n)");
-                String userInput = scanner.nextLine().toLowerCase;
-          }
-            while (userInput.equals("y")) { 
-              System.out.println("Member name: " + name);
-              System.out.println("MemberId: " + memberId);
-              System.out.println("InvoiceNumber: " + invoiceNumber);
-              System.out.println("Payment date: " + invoiceDate);
-              System.out.println("Amount paid: " + fee);
-              
-                return true;
-          } else { (userInput.equals("n"){
-            
-            System.out.println("Receipt canceled.");
-               return false;
-          }
-        }
-      }
-        
+               Accounting.printReceipt();
+                         
             break;
         
         case 4:
                accounting.printOverdues(){
                System.out.println(invoice.toString());
-                    break;  
-       }                                                  
- }
-         
+                    break;                                                    
+ 
             // Coach
             case 5:
                System.out.println("Enter member ID:");
