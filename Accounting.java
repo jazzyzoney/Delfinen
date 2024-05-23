@@ -50,7 +50,7 @@ public class Accounting{
       InvoiceDatabase db = new InvoiceDatabase();
       //add name to invoice object  
       Invoice invoice = new Invoice(invoiceDate, dueDate, invoiceNumber, fee, member.getMemberId(), false);//initalize object only include attributes not types. "constructor contract" in invoice class
-      db.addInvoice(Invoice invoice);
+      db.addInvoice(invoice);
       invoiceNumber++;
                
                System.out.println("Invoice number: " + invoiceNumber);
