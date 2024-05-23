@@ -26,9 +26,10 @@ public class Invoice {
          return invoiceDate;
        }
     
-     public LocalDate getDueDate(){
-         return dueDate;
-       }
+      public LocalDate getDueDate(){
+        return dueDate;
+      }
+    
      
      public boolean getIsPaid(){
       return isPaid;
@@ -38,17 +39,16 @@ public class Invoice {
      this.isPaid = isPaid;
      }
      
- 
-     public Boolean isOverdue(){  
-      LocalDate today = LocalDate.now(); 
-       if (today.isAfter(dueDate) && isPaid == false){ //if today is after the due date of the object AND it is NOT PAID YET
-       return true; // then returns true. Because the question is, is it overdue?
+       
+     public Boolean isOverdue(){
+       LocalDate today = LocalDate.now();
+       if(today.isAfter(dueDate) && isPaid == false){
+       return true;
        }
-       return false;
-     }   
-    
-      
-}
+       System.out.println("Not paid")
+       return false;  
+       }          
+   }         
+
+           
        
-       
-         

@@ -40,10 +40,11 @@ public class Accounting{
     
     public Invoice createInvoice(Member member){
       String memberId = member.getMemberId();
-      LocalDate invoiceDate = LocalDate.now();
-      int fee = getMemberTypeFee(member);
+      
+      LocalDate invoiceDate = Invoice.LocalDate.now();
+      int fee = member.getMemberTypeFee();
       LocalDate dueDate = invoiceDate.plusDays(2); //set it to 2 days to show in presentation
-            
+        
       Invoice invoice = new Invoice(invoiceDate, dueDate, invoiceNumber, fee, memberId, false);//initalize object only include attributes not types. "constructor contract" in invoice class
       invoices.add(invoice);
       invoiceNumber++;
@@ -52,7 +53,7 @@ public class Accounting{
                System.out.println("Date of invoice: " + invoiceDate);
                System.out.println("MemberId: " + memberId);
                System.out.println("Duedate: " + dueDate); 
-               System.out.println("Membership fee: " + fee);              
+               System.out.println("Membership fee: " + fee);            
                return invoice;
    } 
         
@@ -79,6 +80,8 @@ public class Accounting{
       }
    }
    
+   
+   //put  in database class
        public List<Invoice> findOverdueInvoices() { 
         List<Invoice> overdues = new ArrayList<>(); //// Stores overdue invoices 
          for (Invoice invoice : invoices) { // Code to be executed FOR EACH (loop) element
@@ -89,7 +92,7 @@ public class Accounting{
          return overdues;
    }   
       
-  
+  //set to manual paid or not
       public void printOverdues(){
         List<Invoice> overdues = findOverdueInvoices();
         for (Invoice invoice : overdues){
