@@ -17,7 +17,10 @@ public class Controller {
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
-   
+      InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
+      Accounting accounting = new Accounting();
+      Invoice invoice = new Invoice();
+                     
       do {
          System.out.println();
          System.out.println("Welcome to the Swimming Club Management System!\n");
@@ -99,11 +102,14 @@ public class Controller {
                    break;
                   }
                  }
-         
-               //Accounting.createInvoice(Member); 
+                 
+                 
+               1 member -> sendes til createInvoice
+               
+               accounting.createInvoice(member);
                //System.out.println("Would you like to print a receipt? (y/n)");
               // String receiptScan = scanner.nextLine().toLowerCase;
-               //Accounting.printReceipt();
+               //accounting.printReceipt();
             
             break;
         

@@ -25,6 +25,10 @@ public class Accounting{
       this.dueDate=dueDate; 
     }
     
+    public Accounting(){
+     
+    }
+    
     public int getJuniorFee() {
         return juniorFee;
     }
