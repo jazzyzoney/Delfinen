@@ -66,9 +66,8 @@ public class MembersDatabase {
          Competitor competitor = (Competitor) member;
          System.out.println("Coach: " + competitor.getCoach());
          System.out.println("Disciplines: " + String.join(", ", competitor.getDisciplines()));
-         System.out.println("*********************************************************");
       } else {
-         System.out.println("This member is not a competitor.");
+         System.out.println("*********************************************************");
       }
    }
 }
