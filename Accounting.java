@@ -55,7 +55,7 @@ public class Accounting{
                
                System.out.println("Invoice number: " + invoiceNumber);
                System.out.println("Date of invoice: " + invoiceDate);
-               System.out.println("MemberId: " + memberId);
+               System.out.println("MemberId: " + member.getMemberId());
                System.out.println("Duedate: " + dueDate); 
                System.out.println("Membership fee: " + fee);            
                return invoice;
@@ -63,7 +63,7 @@ public class Accounting{
         
     public int getMemberTypeFee(Member member){ //calls ageType from adminMember Class to specific fee.           
       
-      if(!member.getActiveMembership()){
+      if(!member.isActiveMembership()){
       return passiveFee;
    } 
     AgeType ageType = member.getAgeType();
