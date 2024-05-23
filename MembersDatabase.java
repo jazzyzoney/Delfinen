@@ -55,6 +55,7 @@ public class MembersDatabase {
  }
 
 
+
    public void printMemberInfo(Member member) {
       System.out.println("*********************************************************");
       System.out.println("Member Name: " + member.name);
