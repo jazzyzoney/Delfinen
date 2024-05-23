@@ -12,17 +12,17 @@ public class Accounting{
     private int passiveFee = 500; // cost of passive membership 
     private int invoiceNumber = 0; 
     private LocalDate invoice;
-   private LocalDate invoiceDate = LocalDate.now();
-   private LocalDate dueDate = invoiceDate.plusDays(2);
+    private LocalDate invoiceDate = LocalDate.now();
+    private LocalDate dueDate = invoiceDate.plusDays(2);
        
     public Accounting(int juniorFee, int seniorFee, int overSixtyFee, int passiveFee, LocalDate invoice){
       this.juniorFee = juniorFee;
       this.seniorFee = seniorFee;
       this.overSixtyFee = overSixtyFee;
       this.passiveFee = passiveFee;
-     this.invoice = invoice;
-     this.invoiceDate=invoiceDate;
-     this.dueDate=dueDate; 
+      this.invoice = invoice;
+      this.invoiceDate=invoiceDate;
+      this.dueDate=dueDate; 
     }
     
     public int getJuniorFee() {
@@ -46,9 +46,13 @@ public class Accounting{
       LocalDate invoiceDate = LocalDate.now();
       LocalDate dueDate = invoiceDate.plusDays(2); //set it to 2 days to show in presentation
       int fee = getMemberTypeFee(member);
+<<<<<<< Updated upstream
 
       InvoiceDatabase db = new InvoiceDatabase();
       //add name to invoice object  
+=======
+ 
+>>>>>>> Stashed changes
       Invoice invoice = new Invoice(invoiceDate, dueDate, invoiceNumber, fee, member.getMemberId(), false);//initalize object only include attributes not types. "constructor contract" in invoice class
       db.addInvoice(invoice);
       invoiceNumber++;

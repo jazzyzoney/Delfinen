@@ -39,11 +39,12 @@ public class InvoiceDatabase{
         System.out.println("Duedate: " + invoice.getDueDate());
         System.out.println("Invoice number: " + invoice.getInvoiceNumber());
         System.out.println("Amount due: " + invoice.getFee());
-        //System.out.println("MemberID: " + member.getMemberId());
+        System.out.println("MemberID: " + invoice.getMemberId());
         System.out.println("Payment: " + invoice.getIsPaid());
         System.out.println("*********************************************************");
         
    }
+   
   
        public List<Invoice> findOverdueInvoices() { 
        List<Invoice> overdues = new ArrayList<>(); //// Stores overdue invoices 

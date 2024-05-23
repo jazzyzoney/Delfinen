@@ -37,6 +37,10 @@ public class Invoice { //invoice contract, model, template
       public int getInvoiceNumber(){
        return invoiceNumber;
       }
+      
+      public String getMemberId(){
+         return memberId;
+      }
     
      
      public boolean getIsPaid(){
