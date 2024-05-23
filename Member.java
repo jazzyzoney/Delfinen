@@ -12,10 +12,6 @@ enum SwimType {
     COMPETITIVE, NONCOMPETITIVE
 }
 
-enum swimTeam {
-    JUNIOR, SENIOR
-}
-
 public class Member {
     public String name; // console input
     private String phoneNumber; // console input - husk try-catch til antal cifre. Forlang 8.

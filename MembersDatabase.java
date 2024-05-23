@@ -43,11 +43,6 @@ public class MembersDatabase {
       }
    }
 
-   /*public void printAllMembers() {
-      for (Member member : members) {
-         System.out.println(member);
-      }
-   }*/
 
    public void printMemberInfo(Member member) {
       System.out.println("*********************************************************");
