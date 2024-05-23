@@ -29,6 +29,14 @@ public class Invoice { //invoice contract, model, template
       public LocalDate getDueDate(){
         return dueDate;
       }
+      
+      public int getFee(){
+       return fee;
+      }
+      
+      public int getInvoiceNumber(){
+       return invoiceNumber;
+      }
     
      
      public boolean getIsPaid(){
