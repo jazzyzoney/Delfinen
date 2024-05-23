@@ -46,10 +46,11 @@ public class Controller {
          switch (option) {
             // Chairman
             case 1:
-               System.out.println("Enter name:");
+               
+               System.out.println("Enter first Name and last Name:");
                String name = scanner.nextLine();
             
-               System.out.println("Enter phone number:");
+               System.out.println("Enter phone number (8 numbers):");
                String phoneNumber = scanner.nextLine();
             
                System.out.println("Enter birth date (yyyy-MM-dd):");
