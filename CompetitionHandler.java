@@ -1,6 +1,5 @@
 //jasmin
-import java.util.ArrayList;
-import java.util.LinkedList; 
+import java.util.ArrayList; 
 import java.util.Collections;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
@@ -32,7 +31,7 @@ public class CompetitionHandler{
    
    public void addMemberToDiscipline(Competitor competitor){
       //adding junior swimmers to disciplines
-      if (competitor.getMember().getAge() < 18){
+      if (competitor.getAge() < 18){
          for(String discipline : competitor.getDisciplines()){
             switch (discipline){
                case "Back Crawl":
