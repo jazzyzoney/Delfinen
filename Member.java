@@ -62,19 +62,7 @@ public class Member {
         }
     }
 
-
-     public Member findMember(String name){
-         for (Member member : members){    
-         if(member.getName().equals(name)){
-            return member;
-         }else{     
-     }   for (Member member: members){
-         System.out.println("Member not registered yet");
-            return null;    
-     }
-   }  
-  }
-
+   
 
     // Getters
     public String getName() {

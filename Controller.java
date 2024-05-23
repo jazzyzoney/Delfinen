@@ -129,7 +129,6 @@ public class Controller {
                     break;  
        }                                                  
  }
-
          
             // Coach
             case 5:

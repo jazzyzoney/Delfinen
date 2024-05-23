@@ -5,9 +5,7 @@ import java.util.ArrayList; //to create list of invoices
 import java.time.LocalDate; //to set invoice date
 
 public class Accounting{
-  
-   
- 
+    
     private int juniorFee = 1000; //cost of membership for junior swimmer
     private int seniorFee = 1600; //cost of membership for +18 swimmer
     private int overSixtyFee = 1200; //Cost of membership for +60 swimmers
@@ -93,48 +91,4 @@ public class Accounting{
 
 
 
-            // Accountant
-            case 3:
-               System.out.println("Register a payment");
-               
-               System.out.println("Enter member name:");
-               String name = scanner.nextLine();
-              
-               membersDatabase.getMembers();
-               
-               Accounting.createInvoice(member); 
-               
-             //invoiceNumber, invoiceDate, fee, isPaid);
-             //int fee = accounting.getMemberTypeFee(member);       
-        
-            public boolean printReceipt(){
-               if (!printReceipt) 
-                Scanner receiptScan = new Scanner(System.in);  
-                System.out.println("Would you like to print a receipt? (y/n)");
-                String userInput = scanner.nextLine().toLowerCase;
-          }
-            while (userInput.equals("y")) { 
-              System.out.println("Member name: " + name);
-              System.out.println("MemberId: " + memberId);
-              System.out.println("InvoiceNumber: " + invoiceNumber);
-              System.out.println("Payment date: " + invoiceDate);
-              System.out.println("Amount paid: " + fee);
-              
-                return true;
-          } else { (userInput.equals("n"){
-            
-            System.out.println("Receipt canceled.");
-               return false;
-          }
-        }
-      }
-        
-            break;
-        
-        case 4:
-               accounting.printOverdues(){
-               System.out.println(invoice.toString());
-                    break;  
-       }                                                  
- }
-     
+                
