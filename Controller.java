@@ -92,7 +92,10 @@ public class Controller {
                System.out.println("Enter member ID:");
                String memberId = scanner.nextLine();
               
-               membersDatabase.getMembers();
+               List<Member> members = membersDatabase.getMembers();
+               Member member = contains.memberId
+                for (members.getMemberId = Id
+                 
                
                Accounting.createInvoice(member); 
                
