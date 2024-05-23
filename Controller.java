@@ -19,7 +19,9 @@ public class Controller {
       membersDatabase.generateSomeMembers();
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
-      Invoice invoice = new Invoice();
+ 
+     List<Member> members = new ArrayList<>();
+     //Invoice invoice = new Invoice();
                      
       do {
          System.out.println();
@@ -93,6 +95,24 @@ public class Controller {
                System.out.println("Register a payment");
                
                System.out.println("Enter member ID:");
+        String memberId = scanner.nextLine();
+
+     
+        boolean found = false;
+
+        for (Member member : members) {
+            if (member.getMemberId().equals(memberId)) {
+                System.out.println("Found member: " + member.getName());
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Member not found.");
+        }
+               
+               /* System.out.println("Enter member ID:");
                String memberId = scanner.nextLine();
               
                List<Member> members = membersDatabase.getMembers();
@@ -101,27 +121,27 @@ public class Controller {
                    System.out.println("Found member: " + member.getName());
                    break;
                   }
-                 }
+                 } 
+                 */
                  
-                 
-               1 member -> sendes til createInvoice
+              // 1 member -> sendes til createInvoice
                
-               accounting.createInvoice(member);
+                 // Invoice invoice = accounting.createInvoice();
                //System.out.println("Would you like to print a receipt? (y/n)");
               // String receiptScan = scanner.nextLine().toLowerCase;
                //accounting.printReceipt();
             
-            break;
+          break;
         
         case 4:
-               invoiceDatabase.printOverdues();
+              /* invoiceDatabase.printOverdues();
                System.out.println(invoice.toString());
-                   break;                                                    
+                   break;   */                                                 
  
             // Coach
             case 5:
                System.out.println("Enter member ID:");
-               String memberId = scanner.nextLine();
+               String getMemberId = scanner.nextLine();
 
                System.out.println("Enter discipline (Back Crawl, Crawl, Breast, Butterfly):");
                String discipline = scanner.nextLine();
@@ -137,7 +157,7 @@ public class Controller {
                // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
-                  if (member.getMemberId().equals(memberId) && member instanceof Competitor) {
+                  if (member.getMemberId().equals(getMemberId) && member instanceof Competitor) {
                      competitor = (Competitor) member;
                      break;
                   }
