@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalTime;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
    
@@ -17,11 +18,11 @@ public class Competitor extends Member {
    
    private List<String> disciplines;
    
-   public Competitor(Member member, String coach, int rank) {
-      super(member.getName(), member.getPhoneNumber(), member.getBirthDate(), member.getSwimType(), member.isActiveMembership());
+   public Competitor(String name, String phoneNumber, LocalDate birthDate, SwimType swimType, boolean activeMembership, String coach, List<String> disciplines) {
+      super(name, phoneNumber, birthDate, swimType, activeMembership); 
       this.coach = coach;
       this.rank = rank;
-      this.disciplines = new ArrayList<>();
+      this.disciplines = disciplines != null ? disciplines : new ArrayList<>();
    }
    
    //getter

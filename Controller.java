@@ -56,12 +56,8 @@ public class Controller {
             
                System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
                SwimType swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
-            
-               Member newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
-               membersDatabase.addMember(newMember);
-            
-               System.out.println("Member added successfully!");
-            
+ 
+               Member newMember;
                if (swimType == SwimType.COMPETITIVE) {
                   System.out.println("Enter coach name:");
                   String coach = scanner.nextLine();
@@ -74,14 +70,15 @@ public class Controller {
                      disciplines.add(discipline.trim());
                   }
                
-                  Competitor newCompetitor = new Competitor(newMember, coach, 0);
-                  for (String discipline : disciplines) {
-                     newCompetitor.setDisciplines(discipline);
-                  }
-               
-                  competitionHandler.addMemberToDiscipline(newCompetitor);
+                  newMember = new Competitor(name, phoneNumber, birthDate, swimType, activeMembership, coach, disciplines);
+                  competitionHandler.addMemberToDiscipline((Competitor) newMember);
                   System.out.println("Competitor added successfully!");
+               } else {
+                  newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
                }
+               
+               membersDatabase.addMember(newMember);
+               System.out.println("Member added successfully!");
                membersDatabase.printMemberInfo(newMember);
                break;
             case 2:
@@ -128,7 +125,7 @@ public class Controller {
             case 6:
                System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
                int discipline = scanner.nextInt();
-               competitionHandler.getResults(discipline);
+               competitionHandler.TopFive();
                break;
          
             case 7:
