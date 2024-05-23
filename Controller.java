@@ -100,16 +100,15 @@ public class Controller {
                   }
                  }
          
-               Accounting.createInvoice(member); 
-               
+               //Accounting.createInvoice(Member); 
                //System.out.println("Would you like to print a receipt? (y/n)");
               // String receiptScan = scanner.nextLine().toLowerCase;
-               Accounting.printReceipt();
+               //Accounting.printReceipt();
             
             break;
         
         case 4:
-               accounting.printOverdues();
+               invoiceDatabase.printOverdues();
                System.out.println(invoice.toString());
                    break;                                                    
  
