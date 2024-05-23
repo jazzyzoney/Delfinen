@@ -80,10 +80,10 @@ public class Accounting{
    }
   
         public boolean printReceipt(){
-               if (!printReceipt) 
-                Scanner receiptScan = new Scanner(System.in);  
+               Scanner receiptScan = new Scanner(System.in);
+               if (!printReceipt)   
                 System.out.println("Would you like to print a receipt? (y/n)");
-                String userInput = scanner.nextLine().toLowerCase;
+                String receiptScan = scanner.nextLine().toLowerCase;
           }
             while (userInput.equals("y")) { 
               System.out.println("Member name: " + name);

@@ -8,13 +8,11 @@ public class InvoiceDatabase{
     private final List<Invoice> invoices = new ArrayList<>();
 
     public void generateSomeInvoices(){
-    //invoices.add(new Invoice("Pieter van Hoogenband", LocalDate.of(2024, 1, 1), LocalDate.of(2024, 1, 3).plusdays(2), 1, 1200, "12345", false));
-        
-}
-    
+    //invoices.add(new Invoice("Pieter van Hoogenband", LocalDate.of(2024, 1, 1), LocalDate.of(2024, 1, 3).plusdays(2), 1, 1200, "12345", false));       
+  } 
     public void addInvoice(Invoice invoice) {
         invoices.add(invoice);
-    }
+  }
     
     
     public List<Invoice> getInvoices() {
@@ -63,7 +61,5 @@ public class InvoiceDatabase{
          System.out.println(invoice.toString());  
      
      } 
- }
-   
-   
+ }    
 }

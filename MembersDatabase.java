@@ -49,9 +49,10 @@ public class MembersDatabase {
             return member;
          }else{      
          System.out.println("Member not registered yet");
-          return null;    
+              
     }
-   }  
+   }
+   return null;  
  }
 
 
