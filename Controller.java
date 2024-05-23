@@ -93,14 +93,17 @@ public class Controller {
                String memberId = scanner.nextLine();
               
                List<Member> members = membersDatabase.getMembers();
-               Member member = contains.memberId
-                for (members.getMemberId = Id
-                 
-               
+                 for (Member member : members) {
+                  if (member.getMemberId() == memberId) {
+                   System.out.println("Found member: " + member.getName());
+                   break;
+                  }
+                 }
+         
                Accounting.createInvoice(member); 
                
-               System.out.println("Would you like to print a receipt? (y/n)");
-               String receiptScan = scanner.nextLine().toLowerCase;
+               //System.out.println("Would you like to print a receipt? (y/n)");
+              // String receiptScan = scanner.nextLine().toLowerCase;
                Accounting.printReceipt();
             
             break;
