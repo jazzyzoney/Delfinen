@@ -43,16 +43,16 @@ public class MembersDatabase {
       }
    }
    
-     //public Member findMember(String name){
-       // for (Member member : members){    
-        // if(member.getName().equals(name)){
-            //return member;
-         //}else{      
-         //System.out.println("Member not registered yet");
-           // return null;    
-    // }
-  // }  
-  //}
+     public Member findMember(String memberId){
+       for (Member member : members){    
+        if(member.getMemberId().equals(memberId)){
+            return member;
+         }else{      
+         System.out.println("Member not registered yet");
+          return null;    
+    }
+   }  
+ }
 
 
    public void printMemberInfo(Member member) {
