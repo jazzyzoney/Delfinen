@@ -46,13 +46,12 @@ public class Accounting{
       LocalDate invoiceDate = LocalDate.now();
       LocalDate dueDate = invoiceDate.plusDays(2); //set it to 2 days to show in presentation
       int fee = getMemberTypeFee(member);
-<<<<<<< Updated upstream
+
 
       InvoiceDatabase db = new InvoiceDatabase();
       //add name to invoice object  
-=======
- 
->>>>>>> Stashed changes
+
+
       Invoice invoice = new Invoice(invoiceDate, dueDate, invoiceNumber, fee, member.getMemberId(), false);//initalize object only include attributes not types. "constructor contract" in invoice class
       db.addInvoice(invoice);
       invoiceNumber++;
