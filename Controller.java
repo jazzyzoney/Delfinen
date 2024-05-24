@@ -47,32 +47,32 @@ public class Controller {
          switch (option) {
             // Chairman
             case 1:
-                try {
-                    System.out.println("Enter first Name and last Name:");
-                    String name = scanner.nextLine();
-
-                    String phoneNumber;
-                    while (true) {
-                        System.out.println("Enter phone number (8 numbers):");
-                        phoneNumber = scanner.nextLine();
-                        if (phoneNumber.length() == 8 && phoneNumber.matches("\\d+")) {
-                            break;
-                        } else {
-                            System.out.println("Invalid phone number. Please enter exactly 8 digits.");
-                        }
-                    }
-
-                    LocalDate birthDate;
-                    while (true) {
-                        System.out.println("Enter birth date (yyyy-MM-dd):");
-                        String birthDateString = scanner.nextLine();
-                        try {
-                            birthDate = LocalDate.parse(birthDateString, dateFormatter);
-                            break;
-                        } catch (Exception e) {
-                            System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
-                        }
-                    }               
+               try {
+                  System.out.println("Enter first Name and last Name:");
+                  String name = scanner.nextLine();
+               
+                  String phoneNumber;
+                  while (true) {
+                     System.out.println("Enter phone number (8 numbers):");
+                     phoneNumber = scanner.nextLine();
+                     if (phoneNumber.length() == 8 && phoneNumber.matches("\\d+")) {
+                        break;
+                     } else {
+                        System.out.println("Invalid phone number. Please enter exactly 8 digits.");
+                     }
+                  }
+               
+                  LocalDate birthDate;
+                  while (true) {
+                     System.out.println("Enter birth date (yyyy-MM-dd):");
+                     String birthDateString = scanner.nextLine();
+                     try {
+                        birthDate = LocalDate.parse(birthDateString, dateFormatter);
+                        break;
+                     } catch (Exception e) {
+                        System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
+                     }
+                  }               
                   System.out.println("Enter active membership status (true/false):");
                   boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
                
@@ -127,7 +127,7 @@ public class Controller {
                accounting.createInvoice(accountingMember);   
                break;
          
-    
+         
             case 4:
                System.out.println("Show members in arrears.");
                  
@@ -190,5 +190,13 @@ public class Controller {
                System.out.println("Invalid option. Please try again.");
          }
       } while (true);
+   }
+   
+   private static Duration parseDuration(String input) {
+      String[] parts = input.split(":");
+      int minutes = Integer.parseInt(parts[0]);
+      double seconds = Double.parseDouble(parts[1]);
+      long millis = (long) (seconds * 1000);
+      return Duration.parse("PT" + minutes + "M" + (int) seconds + "S" + millis + "N");   
    }
 }
