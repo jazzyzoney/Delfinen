@@ -132,9 +132,9 @@ public class Controller {
             case 4:
                System.out.println("Show members in arrears.");
                  
-               invoiceDatabase.printOverdues(); 
+               //invoiceDatabase.printOverdues(invoices); 
                
-               invoice.Database.printAllInvoices();
+               invoiceDatabase.printAllInvoices(invoices);
               
                break;                                                    
          
