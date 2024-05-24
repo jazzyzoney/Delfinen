@@ -22,6 +22,7 @@ public class Controller {
       Accounting accounting = new Accounting();
       invoiceDatabase.generateSomeInvoices();
       
+     
      //List<Member> members = new ArrayList<>();
      //Invoice invoice = new Invoice();
                      
