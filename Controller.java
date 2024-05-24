@@ -115,36 +115,10 @@ public class Controller {
                accounting.createInvoice(accountingMember);   
                break;
          
-              
-              
-         //boolean found = false;
-         //for (Member member : members) {
-            //if (member.getMemberId().equals(memberId)) {
-               // System.out.println("Found member: " + member.getName());
-               // found = true;
-               // break;
-           // }
-         //}
-         //if (!found) {
-         //    System.out.println("Member not found.");
-         // } 
-         
-               
-               /* System.out.println("Enter member ID:");
-               String memberId = scanner.nextLine();
-              
-               List<Member> members = membersDatabase.getMembers();
-                 for (Member member : members) {
-                  if (member.getMemberId() == memberId) {
-                   System.out.println("Found member: " + member.getName());
-                   break;
-                  }
-                 } 
-                 */
-                 
-              // 1 member -> sendes til createInvoice 
-         
+    
             case 4:
+               System.out.println("Show members in arrears.");
+                 
                invoiceDatabase.printOverdues(); 
               
                break;                                                    
