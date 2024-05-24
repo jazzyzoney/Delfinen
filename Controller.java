@@ -1,6 +1,7 @@
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +15,6 @@ public class Controller {
    public static void controller() {
       Scanner scanner = new Scanner(System.in);
       DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
@@ -137,14 +137,15 @@ public class Controller {
             
                System.out.println("Enter result time (mm:ss.SSS):");
                String resultTime = scanner.nextLine();
-               LocalTime result;
+               Duration result;
                
-               try{
-                  result = LocalTime.parse(resultTime, timeFormatter);
+               try {
+                  result = Duration.parse("PT" + resultTime);
                } catch (DateTimeParseException e) {
                   System.out.println("Invalid time format");
+                  break;
                }
-            
+               
                // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
