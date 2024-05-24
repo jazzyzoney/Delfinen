@@ -124,6 +124,7 @@ public class Controller {
                      accountingMember = currentMember;
                   }
                } 
+               
                accounting.createInvoice(accountingMember);   
                break;
          
@@ -132,6 +133,8 @@ public class Controller {
                System.out.println("Show members in arrears.");
                  
                invoiceDatabase.printOverdues(); 
+               
+               invoice.Database.printAllInvoices();
               
                break;                                                    
          
