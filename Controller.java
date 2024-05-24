@@ -1,6 +1,7 @@
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +15,6 @@ public class Controller {
    public static void controller() {
       Scanner scanner = new Scanner(System.in);
       DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
@@ -51,16 +51,28 @@ public class Controller {
                   System.out.println("Enter first Name and last Name:");
                   String name = scanner.nextLine();
                
-                  System.out.println("Enter phone number (8 numbers):");
-                  String phoneNumber = scanner.nextLine();
-               
-                  if (phoneNumber.length() != 8 || !phoneNumber.matches("\\d+")) {
-                     throw new IllegalArgumentException("Phone number must be exactly 8 digits.");
+                  String phoneNumber;
+                  while (true) {
+                     System.out.println("Enter phone number (8 numbers):");
+                     phoneNumber = scanner.nextLine();
+                     if (phoneNumber.length() == 8 && phoneNumber.matches("\\d+")) {
+                        break;
+                     } else {
+                        System.out.println("Invalid phone number. Please enter exactly 8 digits.");
+                     }
                   }
-                  System.out.println("Enter birth date (yyyy-MM-dd):");
-                  String birthDateString = scanner.nextLine();
-                  LocalDate birthDate = LocalDate.parse(birthDateString, dateFormatter);
                
+                  LocalDate birthDate;
+                  while (true) {
+                     System.out.println("Enter birth date (yyyy-MM-dd):");
+                     String birthDateString = scanner.nextLine();
+                     try {
+                        birthDate = LocalDate.parse(birthDateString, dateFormatter);
+                        break;
+                     } catch (Exception e) {
+                        System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
+                     }
+                  }               
                   System.out.println("Enter active membership status (true/false):");
                   boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
                
@@ -115,7 +127,7 @@ public class Controller {
                accounting.createInvoice(accountingMember);   
                break;
          
-    
+         
             case 4:
                System.out.println("Show members in arrears.");
                  
@@ -137,14 +149,15 @@ public class Controller {
             
                System.out.println("Enter result time (mm:ss.SSS):");
                String resultTime = scanner.nextLine();
-               LocalTime result;
+               Duration result;
                
-               try{
-                  result = LocalTime.parse(resultTime, timeFormatter);
+               try {
+                  result = Duration.parse("PT" + resultTime);
                } catch (DateTimeParseException e) {
                   System.out.println("Invalid time format");
+                  break;
                }
-            
+               
                // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
@@ -177,5 +190,13 @@ public class Controller {
                System.out.println("Invalid option. Please try again.");
          }
       } while (true);
+   }
+   
+   private static Duration parseDuration(String input) {
+      String[] parts = input.split(":");
+      int minutes = Integer.parseInt(parts[0]);
+      double seconds = Double.parseDouble(parts[1]);
+      long millis = (long) (seconds * 1000);
+      return Duration.parse("PT" + minutes + "M" + (int) seconds + "S" + millis + "N");   
    }
 }

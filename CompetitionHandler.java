@@ -1,8 +1,9 @@
 //Author Jasmin
 import java.util.ArrayList;
 import java.util.Collections;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 public class CompetitionHandler {
 
@@ -74,16 +75,16 @@ public class CompetitionHandler {
    }
 
    //writing results to: a list with competition results, a list with training results
-   public void RecordResult(int resultType, Competitor competitor, LocalTime result, String discipline) {
+   public void RecordResult(int resultType, Competitor competitor, Duration result, String discipline) {
       //switch case 1. training results, 2. competition results
       switch (resultType) {
          case 1:
-            competitor.setTrainingResult(result.toString());
-            competitor.setTrainingDate(LocalDateTime.now().toString());
+            competitor.setTrainingResult(result);
+            competitor.setTrainingDate(LocalDateTime.now());
             System.out.println("Training result registered for: " + competitor.getMemberId());
             break;
          case 2:
-            competitor.setResult(result.toString());
+            competitor.setResult(result);
             //set date, rank...?
             addResultToDiscipline(competitor, result, discipline);
             System.out.println("Competition result registered for: " + competitor.getMemberId());
@@ -92,8 +93,7 @@ public class CompetitionHandler {
             System.out.println("invalid");
       }
    }
-
-   private void addResultToDiscipline(Competitor competitor, LocalTime result, String discipline) {
+   private void addResultToDiscipline(Competitor competitor, Duration result, String discipline) {
       if (competitor.getAge() < 18) {
          switch (discipline) {
             case "Back Crawl":
@@ -127,10 +127,10 @@ public class CompetitionHandler {
       }
    }
 
-   private void addResultToCompetitorList(ArrayList<Competitor> competitorList, Competitor competitor, LocalTime result) {
+   private void addResultToCompetitorList(ArrayList<Competitor> competitorList, Competitor competitor, Duration result) {
       for (Competitor c : competitorList) {
          if (c.getMemberId().equals(competitor.getMemberId())) {
-            c.setResult(result.toString());
+            c.setResult(result);
             return;
          }
       }
@@ -138,14 +138,14 @@ public class CompetitionHandler {
    }
 
    public void printResult(Competitor competitor) { //helper method for getResults()
-      LocalTime result = LocalTime.parse(competitor.getResult().toString());
+      Duration result = competitor.getResult();
       if (result != null) {
          System.out.println(competitor.getName()); //competitor name
          System.out.println("Competition result: " + result);
          System.out.println("Date: " + competitor.getDate()); //competition date
       }
    
-      LocalTime trainingResult = competitor.getTrainingResult();
+      Duration trainingResult = competitor.getTrainingResult();
       if (trainingResult != null) {
          System.out.println("Training result: " + trainingResult);
          System.out.println("Date: " + competitor.getTrainingDate()); //training date
