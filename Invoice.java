@@ -51,7 +51,12 @@ public class Invoice { //invoice contract, model, template
      this.isPaid = isPaid;
      }
      
-       
+     @Override
+     public String toString() {
+     return "Invoice [memberId=" + memberId + ", fee=" + fee + ", invoiceDate=" + invoiceDate +
+         ", dueDate=" + dueDate + ", invoiceNumber=" + invoiceNumber + ", isPaid=" + isPaid + "]";
+     }
+     
      public Boolean isOverdue(){
        LocalDate today = LocalDate.now();
        if(today.isAfter(dueDate) && isPaid == false){

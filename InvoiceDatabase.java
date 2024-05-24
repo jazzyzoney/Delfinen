@@ -5,7 +5,7 @@ import java.util.List;
 public class InvoiceDatabase{
 
     private final List<Invoice> invoices = new ArrayList<>();
-
+   
 
     public void addInvoices(Invoice invoice){ 
     invoices.add(invoice);      

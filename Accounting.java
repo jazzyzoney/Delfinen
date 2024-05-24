@@ -51,10 +51,8 @@ public class Accounting{
       LocalDate dueDate = invoiceDate.plusDays(2); //set it to 2 days to show in presentation
       int fee = getMemberTypeFee(member);
 
-
       InvoiceDatabase db = new InvoiceDatabase();
       //add name to invoice object  
-
 
       Invoice invoice = new Invoice(invoiceDate, dueDate, invoiceNumber, fee, member.getMemberId(), false);//initalize object only include attributes not types. "constructor contract" in invoice class
       db.addInvoice(invoice);
@@ -90,7 +88,6 @@ public class Accounting{
             return 0;
       }
    }
- 
  } 
  
  

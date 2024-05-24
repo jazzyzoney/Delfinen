@@ -94,23 +94,35 @@ public class Controller {
             case 3:
                System.out.println("Register a payment");
                
-               System.out.println("Enter member ID:");
-        String memberId = scanner.nextLine();
+               System.out.println("Enter member ID: ");
+               String memberId = scanner.nextLine();
+              
+               Member accountingMember = null;
+               
+               for (Member currentMember : members) {
+               if (currentMember.getMemberId().equals(memberId)) {
+                     accountingMember = currentMember;
+                  }
+                  }
+                  
+                  accounting.createInvoice(accountingMember);
+                  
+                  break;
 
-     
-        boolean found = false;
-
-        for (Member member : members) {
-            if (member.getMemberId().equals(memberId)) {
-                System.out.println("Found member: " + member.getName());
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Member not found.");
-        }
+              
+              
+        //boolean found = false;
+        //for (Member member : members) {
+            //if (member.getMemberId().equals(memberId)) {
+               // System.out.println("Found member: " + member.getName());
+               // found = true;
+               // break;
+           // }
+        //}
+        //if (!found) {
+        //    System.out.println("Member not found.");
+       // } 
+       
                
                /* System.out.println("Enter member ID:");
                String memberId = scanner.nextLine();
@@ -124,19 +136,12 @@ public class Controller {
                  } 
                  */
                  
-              // 1 member -> sendes til createInvoice
-               
-                 // Invoice invoice = accounting.createInvoice();
-               //System.out.println("Would you like to print a receipt? (y/n)");
-              // String receiptScan = scanner.nextLine().toLowerCase;
-               //accounting.printReceipt();
-            
-          break;
+              // 1 member -> sendes til createInvoice 
         
-        case 4:
-              /* invoiceDatabase.printOverdues();
-               System.out.println(invoice.toString());
-                   break;   */                                                 
+            case 4:
+              invoiceDatabase.printOverdues(); 
+              
+                break;                                                    
  
             // Coach
             case 5:
