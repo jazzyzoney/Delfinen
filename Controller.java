@@ -47,20 +47,32 @@ public class Controller {
          switch (option) {
             // Chairman
             case 1:
-               try {
-                  System.out.println("Enter first Name and last Name:");
-                  String name = scanner.nextLine();
-               
-                  System.out.println("Enter phone number (8 numbers):");
-                  String phoneNumber = scanner.nextLine();
-               
-                  if (phoneNumber.length() != 8 || !phoneNumber.matches("\\d+")) {
-                     throw new IllegalArgumentException("Phone number must be exactly 8 digits.");
-                  }
-                  System.out.println("Enter birth date (yyyy-MM-dd):");
-                  String birthDateString = scanner.nextLine();
-                  LocalDate birthDate = LocalDate.parse(birthDateString, dateFormatter);
-               
+                try {
+                    System.out.println("Enter first Name and last Name:");
+                    String name = scanner.nextLine();
+
+                    String phoneNumber;
+                    while (true) {
+                        System.out.println("Enter phone number (8 numbers):");
+                        phoneNumber = scanner.nextLine();
+                        if (phoneNumber.length() == 8 && phoneNumber.matches("\\d+")) {
+                            break;
+                        } else {
+                            System.out.println("Invalid phone number. Please enter exactly 8 digits.");
+                        }
+                    }
+
+                    LocalDate birthDate;
+                    while (true) {
+                        System.out.println("Enter birth date (yyyy-MM-dd):");
+                        String birthDateString = scanner.nextLine();
+                        try {
+                            birthDate = LocalDate.parse(birthDateString, dateFormatter);
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
+                        }
+                    }               
                   System.out.println("Enter active membership status (true/false):");
                   boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
                
