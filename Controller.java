@@ -20,6 +20,7 @@ public class Controller {
       membersDatabase.generateSomeMembers();
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
+      invoiceDatabase.generateSomeInvoices();
       
      //List<Member> members = new ArrayList<>();
      //Invoice invoice = new Invoice();
@@ -132,9 +133,9 @@ public class Controller {
             case 4:
                System.out.println("Show members in arrears.");
                  
-               //invoiceDatabase.printOverdues(invoices); 
+               invoiceDatabase.printOverdues(invoices); 
                
-               invoiceDatabase.printAllInvoices(invoices);
+               //invoiceDatabase.printAllInvoices(invoices);
               
                break;                                                    
          
