@@ -12,8 +12,21 @@ public class InvoiceDatabase{
   }
 
     public void generateSomeInvoices(){ 
-  } 
-  
+ 
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 1, 500, "480fd92g", true));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 2, 1200, "480fd92h", true));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 5, 1600, "480fd92s", true));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 5, 1200, "480fd92p", false));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 6, 1600, "480fd92t", true));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 7, 1200, "480fd92x", false));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 8, 500, "480fd92v", false));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 9, 500, "480fd922", false));
+        invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 10, 1200, "480fd923", false));
+        
+         
+}
+
+
     public void addInvoice(Invoice invoice) {
         invoices.add(invoice);
   }
@@ -35,7 +48,6 @@ public class InvoiceDatabase{
      public void printInvInfo(Invoice invoice) {
         
         System.out.println("*********************************************************"); 
-        //System.out.println("Member Name: " + member.name());
         System.out.println("Invoice date: " + invoice.getInvoiceDate());
         System.out.println("Duedate: " + invoice.getDueDate());
         System.out.println("Invoice number: " + invoice.getInvoiceNumber());
