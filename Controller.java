@@ -36,11 +36,12 @@ public class Controller {
          System.out.println("2. Print all members");
          // Accountant
          System.out.println("3. Create invoice");
-         System.out.println("4. Print members in arrears");
+         System.out.println("4.Print all current invoices"); 
+         System.out.println("5.Print members in arrears");
          // Coach
-         System.out.println("5. Register result");
-         System.out.println("6. Print top five swimmers");
-         System.out.println("7. Exit");
+         System.out.println("6. Register result");
+         System.out.println("7. Print top five swimmers");
+         System.out.println("8. Exit");
          System.out.println("*************************************************");
       
          int option = scanner.nextInt();
@@ -134,14 +135,16 @@ public class Controller {
             case 4:
                System.out.println("Show members in arrears.");
                  
-               invoiceDatabase.printOverdues(invoices); 
+               invoiceDatabase.printOverdues(); 
+            case 5:
+               System.out.println("Show all currant invoices");
                
-               //invoiceDatabase.printAllInvoices(invoices);
+               invoiceDatabase.printAllInvoices();
               
                break;                                                    
          
             // Coach
-            case 5:
+            case 6:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();
             
@@ -180,13 +183,13 @@ public class Controller {
                }
                break;
                
-            case 6:
+            case 7:
                System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
                int disciplineNumber = scanner.nextInt();
                competitionHandler.TopFive(disciplineNumber);
                break;
          
-            case 7:
+            case 8:
                System.out.println("Exit");
                scanner.close();
                System.exit(0);
