@@ -4,12 +4,14 @@ import java.util.List;
 
 public class InvoiceDatabase{
 
-    private final List<Invoice> invoices = new ArrayList<>();
-   
-
-    public void addInvoices(Invoice invoice){ 
-    invoices.add(invoice);      
-  }
+    public List<Invoice> invoices;
+    
+    public InvoiceDatabase() {
+     invoices = new ArrayList<>();
+    
+    }
+     
+    //public List<Invoice> invoices = new ArrayList<>();
 
     public void generateSomeInvoices(){ 
  
