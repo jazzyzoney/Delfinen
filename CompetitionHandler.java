@@ -75,24 +75,36 @@ public class CompetitionHandler {
    }
 
    //writing results to: a list with competition results, a list with training results
-   public void RecordResult(int resultType, Competitor competitor, Duration result, String discipline) {
+   public void RecordResult(int resultType, Competitor competitor, String resultTime, String discipline) {
       //switch case 1. training results, 2. competition results
       switch (resultType) {
          case 1:
-            competitor.setTrainingResult(result);
+            Duration trainingResult = parseDurationFromTimeString(resultTime);
+            
+            competitor.setTrainingResult(trainingResult);
             competitor.setTrainingDate(LocalDateTime.now());
             System.out.println("Training result registered for: " + competitor.getMemberId());
             break;
          case 2:
-            competitor.setResult(result);
+            Duration competitionResult = parseDurationFromTimeString(resultTime);
+            competitor.setResult(competitionResult);
             //set date, rank...?
-            addResultToDiscipline(competitor, result, discipline);
+            addResultToDiscipline(competitor, competitionResult, discipline);
             System.out.println("Competition result registered for: " + competitor.getMemberId());
             break;
          default:
             System.out.println("invalid");
       }
    }
+   
+   public Duration parseDurationFromTimeString(String resultTime) {
+      String[] parts = resultTime.split(":");
+      int minutes = Integer.parseInt(parts[0]);
+      String[] secondsAndMillis = parts[1].split("\\.");
+      int seconds = Integer.parseInt(secondsAndMillis[0]);
+      int milliseconds = Integer.parseInt(secondsAndMillis[1]);
+      return Duration.ofMinutes(minutes).plusSeconds(seconds).plusMillis(milliseconds);   }
+   
    private void addResultToDiscipline(Competitor competitor, Duration result, String discipline) {
       if (competitor.getAge() < 18) {
          switch (discipline) {

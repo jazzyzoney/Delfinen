@@ -25,7 +25,7 @@ public class Controller {
       
      
      //List<Member> members = new ArrayList<>();
-     Invoice invoice = new Invoice();
+     //Invoice invoice = new Invoice();
                      
       do {
          System.out.println();
@@ -145,6 +145,7 @@ public class Controller {
                break;                                                    
          
             // Coach
+
             case 6:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();
@@ -156,18 +157,11 @@ public class Controller {
                int resultType = scanner.nextInt();
                scanner.nextLine();  // consume newline
             
-               System.out.println("Enter result time (mm:ss.SSS):");
+               System.out.println("Enter result time in format mm:ss.SSS (e.g., 02:22.111):");
                String resultTime = scanner.nextLine();
-               Duration result;
-               
-               try {
-                  result = Duration.parse("PT" + resultTime);
-               } catch (DateTimeParseException e) {
-                  System.out.println("Invalid time format");
-                  break;
-               }
-               
-               // Find the competitor
+               Duration result = competitionHandler.parseDurationFromTimeString(resultTime);
+            
+            // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
                   if (member.getMemberId().equals(getMemberId) && member instanceof Competitor) {
@@ -177,10 +171,10 @@ public class Controller {
                }
             
                if (competitor != null) {
-                  competitionHandler.RecordResult(resultType, competitor, result, discipline);
-                  System.out.println("Result recorded successfully!");
+                  competitionHandler.RecordResult(resultType, competitor, resultTime, discipline);
+                  System.out.println("Result recorded");
                } else {
-                  System.out.println("Competitor not found!");
+                  System.out.println("Competitor not found");
                }
                break;
                
@@ -201,11 +195,7 @@ public class Controller {
       } while (true);
    }
    
-   private static Duration parseDuration(String input) {
-      String[] parts = input.split(":");
-      int minutes = Integer.parseInt(parts[0]);
-      double seconds = Double.parseDouble(parts[1]);
-      long millis = (long) (seconds * 1000);
-      return Duration.parse("PT" + minutes + "M" + (int) seconds + "S" + millis + "N");   
+   private static Duration parseDuration(int m, int s, int ms) {
+      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
    }
 }

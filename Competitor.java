@@ -130,4 +130,122 @@ public class Competitor extends Member {
                System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
                int disciplineNumberForTopFive = scanner.nextInt();
                competitionHandler.TopFive(disciplineNumber);
-               break; */
+               break; 
+               //
+                          case 5:
+               System.out.println("Enter member ID:");
+               String getMemberId = scanner.nextLine();
+            
+               System.out.println("Enter discipline (Back Crawl, Crawl, Breast, Butterfly):");
+               String discipline = scanner.nextLine();
+            
+               System.out.println("Enter result type (1: Training, 2: Competition):");
+               int resultType = scanner.nextInt();
+               scanner.nextLine();  // consume newline
+            
+               System.out.println("Enter result time in format PTmm:ss.SSS (e.g., PT02:22.111):");
+               String resultTime = scanner.nextLine();
+               System.out.println("Read time: " + resultTime);
+               Duration result;
+               try {
+                  result = Duration.parse("PT" + resultTime); // Add "PT" prefix
+               } catch (DateTimeParseException e) {
+                  System.out.println("Invalid time format: " + e.getMessage());
+                  break;
+               }
+               
+               // Find the competitor
+               Competitor competitor = null;
+               for (Member member : membersDatabase.getMembers()) {
+                  if (member.getMemberId().equals(getMemberId) && member instanceof Competitor) {
+                     competitor = (Competitor) member;
+                     break;
+                  }
+               }
+            
+               if (competitor != null) {
+                  competitionHandler.RecordResult(resultType, competitor, result, discipline);
+                  System.out.println("Result recorded successfully!");
+               } else {
+                  System.out.println("Competitor not found!");
+               }
+               break;
+               
+            case 6:
+               System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
+               int disciplineNumber = scanner.nextInt();
+               competitionHandler.TopFive(disciplineNumber);
+               break;
+         
+            case 7:
+               System.out.println("Exit");
+               scanner.close();
+               System.exit(0);
+               break;
+            default:
+               System.out.println("Invalid option. Please try again.");
+         }
+      } while (true);
+   }
+   
+   private static Duration parseDuration(int m, int s, int ms) {
+      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
+   }
+}
+               //// RESULT REGISTration WORKS 
+               
+                           // Coach
+            case 5:
+               System.out.println("Enter member ID:");
+               String getMemberId = scanner.nextLine();
+            
+               System.out.println("Enter discipline (Back Crawl, Crawl, Breast, Butterfly):");
+               String discipline = scanner.nextLine();
+            
+               System.out.println("Enter result type (1: Training, 2: Competition):");
+               int resultType = scanner.nextInt();
+               scanner.nextLine();  // consume newline
+            
+               System.out.println("Enter result time in format mm:ss.SSS (e.g., 02:22.111):");
+               String resultTime = scanner.nextLine();
+               Duration result = competitionHandler.parseDurationFromTimeString(resultTime);
+            
+            // Find the competitor
+               Competitor competitor = null;
+               for (Member member : membersDatabase.getMembers()) {
+                  if (member.getMemberId().equals(getMemberId) && member instanceof Competitor) {
+                     competitor = (Competitor) member;
+                     break;
+                  }
+               }
+            
+               if (competitor != null) {
+                  competitionHandler.RecordResult(resultType, competitor, resultTime, discipline);
+                  System.out.println("Result recorded");
+               } else {
+                  System.out.println("Competitor not found");
+               }
+               break;
+               
+            case 6:
+               System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
+               int disciplineNumber = scanner.nextInt();
+               competitionHandler.TopFive(disciplineNumber);
+               break;
+         
+            case 7:
+               System.out.println("Exit");
+               scanner.close();
+               System.exit(0);
+               break;
+            default:
+               System.out.println("Invalid option. Please try again.");
+         }
+      } while (true);
+   }
+   
+   private static Duration parseDuration(int m, int s, int ms) {
+      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
+   }
+}
+               */
