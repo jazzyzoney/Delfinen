@@ -21,10 +21,11 @@ public class Controller {
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
       invoiceDatabase.generateSomeInvoices();
+      //Boolean overdue = Invoice.isOverdue();
       
      
      //List<Member> members = new ArrayList<>();
-     //Invoice invoice = new Invoice();
+     Invoice invoice = new Invoice();
                      
       do {
          System.out.println();
