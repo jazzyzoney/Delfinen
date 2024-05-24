@@ -14,12 +14,13 @@ public class Controller {
    public static void controller() {
       Scanner scanner = new Scanner(System.in);
       DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+      DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
- 
+      
      //List<Member> members = new ArrayList<>();
      //Invoice invoice = new Invoice();
                      
@@ -47,51 +48,51 @@ public class Controller {
             // Chairman
             case 1:
                try {
-               System.out.println("Enter first Name and last Name:");
-               String name = scanner.nextLine();
-            
-               System.out.println("Enter phone number (8 numbers):");
-               String phoneNumber = scanner.nextLine();
+                  System.out.println("Enter first Name and last Name:");
+                  String name = scanner.nextLine();
                
-               if (phoneNumber.length() != 8 || !phoneNumber.matches("\\d+")) {
-                throw new IllegalArgumentException("Phone number must be exactly 8 digits.");
-               }
-               System.out.println("Enter birth date (yyyy-MM-dd):");
-               String birthDateString = scanner.nextLine();
-               LocalDate birthDate = LocalDate.parse(birthDateString, dateFormatter);
-            
-               System.out.println("Enter active membership status (true/false):");
-               boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
-            
-               System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
-               SwimType swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
-            
-               Member newMember;
-               if (swimType == SwimType.COMPETITIVE) {
-                  System.out.println("Enter coach name:");
-                  String coach = scanner.nextLine();
+                  System.out.println("Enter phone number (8 numbers):");
+                  String phoneNumber = scanner.nextLine();
                
-                  System.out.println("Enter disciplines (Back Crawl, Crawl, Breast, Butterfly)(comma-separated):");
-                  String disciplinesInput = scanner.nextLine();
-                  String[] disciplinesArray = disciplinesInput.split(",");
-                  List<String> disciplines = new ArrayList<>();
-                  for (String discipline : disciplinesArray) {
-                     disciplines.add(discipline.trim());
+                  if (phoneNumber.length() != 8 || !phoneNumber.matches("\\d+")) {
+                     throw new IllegalArgumentException("Phone number must be exactly 8 digits.");
+                  }
+                  System.out.println("Enter birth date (yyyy-MM-dd):");
+                  String birthDateString = scanner.nextLine();
+                  LocalDate birthDate = LocalDate.parse(birthDateString, dateFormatter);
+               
+                  System.out.println("Enter active membership status (true/false):");
+                  boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
+               
+                  System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
+                  SwimType swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
+               
+                  Member newMember;
+                  if (swimType == SwimType.COMPETITIVE) {
+                     System.out.println("Enter coach name:");
+                     String coach = scanner.nextLine();
+                  
+                     System.out.println("Enter disciplines (Back Crawl, Crawl, Breast, Butterfly)(comma-separated):");
+                     String disciplinesInput = scanner.nextLine();
+                     String[] disciplinesArray = disciplinesInput.split(",");
+                     List<String> disciplines = new ArrayList<>();
+                     for (String discipline : disciplinesArray) {
+                        disciplines.add(discipline.trim());
+                     }
+                  
+                     newMember = new Competitor(name, phoneNumber, birthDate, swimType, activeMembership, coach, disciplines);
+                     competitionHandler.addMemberToDiscipline((Competitor) newMember);
+                     System.out.println("Competitor added successfully!");
+                  } else {
+                     newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
                   }
                
-                  newMember = new Competitor(name, phoneNumber, birthDate, swimType, activeMembership, coach, disciplines);
-                  competitionHandler.addMemberToDiscipline((Competitor) newMember);
-                  System.out.println("Competitor added successfully!");
-               } else {
-                  newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
-               }
-               
-               membersDatabase.addMember(newMember);
-               System.out.println("Member added successfully!");
-               membersDatabase.printMemberInfo(newMember);
+                  membersDatabase.addMember(newMember);
+                  System.out.println("Member added successfully!");
+                  membersDatabase.printMemberInfo(newMember);
                } catch (Exception e) {
-                        System.out.println("An error occurred:Check birthDate format ");
-                    }
+                  System.out.println("An error occurred:Check birthDate format ");
+               }
                break;
             case 2:
                membersDatabase.printAllMembers();
@@ -107,29 +108,27 @@ public class Controller {
                Member accountingMember = null;
                
                for (Member currentMember : membersDatabase.members) {
-               if (currentMember.getMemberId().equals(memberId)) {
+                  if (currentMember.getMemberId().equals(memberId)) {
                      accountingMember = currentMember;
                   }
-                  }
-                  
-                  accounting.createInvoice(accountingMember);
-                  
-                  break;
-
+               } 
+               accounting.createInvoice(accountingMember);   
+               break;
+         
               
               
-        //boolean found = false;
-        //for (Member member : members) {
+         //boolean found = false;
+         //for (Member member : members) {
             //if (member.getMemberId().equals(memberId)) {
                // System.out.println("Found member: " + member.getName());
                // found = true;
                // break;
            // }
-        //}
-        //if (!found) {
-        //    System.out.println("Member not found.");
-       // } 
-       
+         //}
+         //if (!found) {
+         //    System.out.println("Member not found.");
+         // } 
+         
                
                /* System.out.println("Enter member ID:");
                String memberId = scanner.nextLine();
@@ -144,27 +143,33 @@ public class Controller {
                  */
                  
               // 1 member -> sendes til createInvoice 
-        
+         
             case 4:
-              invoiceDatabase.printOverdues(); 
+               invoiceDatabase.printOverdues(); 
               
-                break;                                                    
- 
+               break;                                                    
+         
             // Coach
             case 5:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();
-
+            
                System.out.println("Enter discipline (Back Crawl, Crawl, Breast, Butterfly):");
                String discipline = scanner.nextLine();
-
+            
                System.out.println("Enter result type (1: Training, 2: Competition):");
                int resultType = scanner.nextInt();
                scanner.nextLine();  // consume newline
-
+            
                System.out.println("Enter result time (mm:ss.SSS):");
                String resultTime = scanner.nextLine();
-               LocalTime result = LocalTime.parse(resultTime);
+               LocalTime result;
+               
+               try{
+                  result = LocalTime.parse(resultTime, timeFormatter);
+               } catch (DateTimeParseException e) {
+                  System.out.println("Invalid time format");
+               }
             
                // Find the competitor
                Competitor competitor = null;

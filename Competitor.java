@@ -88,6 +88,9 @@ public class Competitor extends Member {
 }
 
 //for controller class
+
+      //DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
+
             // Coach
             /*case 5:
                System.out.println("Enter member ID:");
@@ -102,8 +105,14 @@ public class Competitor extends Member {
 
                System.out.println("Enter result time (mm:ss.SSS):");
                String resultTime = scanner.nextLine();
-               LocalTime result = LocalTime.parse(resultTime);
-            
+               LocalTime result;
+               
+               try{
+                  result = LocalTime.parse(resultTime, timeFormatter);
+               } catch (DateTimeParseException e) {
+                  System.out.println("Invalid time format");
+               }
+               
                // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
