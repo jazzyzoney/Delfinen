@@ -20,7 +20,7 @@ public class Controller {
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
  
-     List<Member> members = new ArrayList<>();
+     //List<Member> members = new ArrayList<>();
      //Invoice invoice = new Invoice();
                      
       do {
@@ -106,7 +106,7 @@ public class Controller {
               
                Member accountingMember = null;
                
-               for (Member currentMember : members) {
+               for (Member currentMember : membersDatabase.members) {
                if (currentMember.getMemberId().equals(memberId)) {
                      accountingMember = currentMember;
                   }

@@ -137,7 +137,7 @@ public class CompetitionHandler {
       competitorList.add(competitor);
    }
 
-   public void printResult(Competitor competitor) {
+   public void printResult(Competitor competitor) { //helper method for getResults()
       LocalTime result = LocalTime.parse(competitor.getResult().toString());
       if (result != null) {
          System.out.println(competitor.getName()); //competitor name
@@ -250,7 +250,7 @@ public class CompetitionHandler {
             juniorTopList.addAll(juniorButterfly);
             break;
       }
-   
+      
       //sort both lists based on training results (lowest time is best)
       Collections.sort(seniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));
       Collections.sort(juniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));

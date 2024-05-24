@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class MembersDatabase {
 
-   private List<Member> members;
+   public List<Member> members;
 
    public MembersDatabase() {
       members = new ArrayList<>();
