@@ -107,7 +107,7 @@ public class Controller {
                   System.out.println("Member added successfully!");
                   membersDatabase.printMemberInfo(newMember);
                } catch (Exception e) {
-                  System.out.println("An error occurred:Check birthDate format ");
+                  System.out.println("An error occurred:Check swim type ");
                }
                break;
             case 2:
@@ -145,7 +145,7 @@ public class Controller {
                break;                                                    
          
             // Coach
-
+         
             case 6:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();

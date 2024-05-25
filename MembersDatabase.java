@@ -11,7 +11,7 @@ public class MembersDatabase {
    public MembersDatabase() {
       members = new ArrayList<>();
    }
-    
+    //This is an arraylist with objects made from the constructor in class Member.
    public void generateSomeMembers(){
       members.add(new Member("John Doe", "12345678", LocalDate.of(2012, 1, 1), SwimType.COMPETITIVE, true));
       members.add(new Member("Jane Doe", "12345678", LocalDate.of(1945,1, 11),SwimType.COMPETITIVE, true));
@@ -32,7 +32,7 @@ public class MembersDatabase {
    public List<Member> getMembers() {
       return members;
    }
-
+//This method is use to print members and also to write if there is no members to print. 
    public void printAllMembers() {
       if (members.isEmpty()) {
          System.out.println("No members in the database.");
@@ -42,20 +42,20 @@ public class MembersDatabase {
          }
       }
    }
-   
-     public Member findMember(String memberId){
-       for (Member member : members){    
-        if(member.getMemberId().equals(memberId)){
+   // This method is a part of Solvejs  work with payment.
+   public Member findMember(String memberId){
+      for (Member member : members){    
+         if(member.getMemberId().equals(memberId)){
             return member;
          }else{      
-         System.out.println("Member not registered yet");
+            System.out.println("Member not registered yet");
               
-    }
+         }
+      }
+      return null;  
    }
-   return null;  
- }
 
-
+// This method print informations about the member from the main class
    public void printMemberInfo(Member member) {
       System.out.println("*********************************************************");
       System.out.println("Member Name: " + member.name);
@@ -67,7 +67,7 @@ public class MembersDatabase {
       System.out.println("Swim type: " + member.getSwimType());
       System.out.println("Active membership?: " + (member.isActiveMembership() ? "Yes" : "No"));
       System.out.println("Registrations date: " + member.getRegistrationDate());
-    //  System.out.println("*********************************************************");
+  
       
       if (member instanceof Competitor) {
          Competitor competitor = (Competitor) member;
