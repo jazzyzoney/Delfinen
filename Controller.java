@@ -80,8 +80,17 @@ public class Controller {
                   System.out.println("Enter active membership status (true/false):");
                   boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
                
-                  System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
-                  SwimType swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
+                  SwimType swimType;
+                    while (true) {
+                        System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
+                        try {
+                            swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid input. Please enter COMPETITIVE or NONCOMPETITIVE.");
+                        }
+                    }
+
                
                   Member newMember;
                   if (swimType == SwimType.COMPETITIVE) {
