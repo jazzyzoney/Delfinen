@@ -55,7 +55,7 @@ public class InvoiceDatabase{
         System.out.println("Invoice number: " + invoice.getInvoiceNumber());
         System.out.println("Amount due: " + invoice.getFee());
         System.out.println("MemberID: " + invoice.getMemberId());
-        System.out.println("Payment: " + invoice.getIsPaid());
+        System.out.println("Payment confirmation: " + invoice.getIsPaid());
         System.out.println("*********************************************************");
         
    }
