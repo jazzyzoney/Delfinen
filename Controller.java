@@ -22,7 +22,7 @@ public class Controller {
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
       invoiceDatabase.generateSomeInvoices();
-      Boolean overdue = Invoice.isOverdue();
+      //Boolean overdue = Invoice.isOverdue();
              
       do {
          System.out.println();

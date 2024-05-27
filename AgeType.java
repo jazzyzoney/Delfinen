@@ -1,3 +1,3 @@
 public enum AgeType {
-    JUNIOR, SENIOR, OVERSIXTY, PASSIVE
+    JUNIOR, SENIOR, OVERSIXTY
 }
