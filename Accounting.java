@@ -68,7 +68,6 @@ public class Accounting{
         
    public int getMemberTypeFee(Member member){ //Enum ageType.           
       
-      if(!member.isActiveMembership()){
          return passiveFee;
       } 
       AgeType ageType = member.getAgeType();
