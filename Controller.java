@@ -31,14 +31,14 @@ public class Controller {
          System.out.println("*************************************************");
          // Chairman
          System.out.println("1. Register new member");
-         System.out.println("2. Print all members\n");
+         System.out.println("2. Print all members");
          // Accountant
          System.out.println("3. Create new invoice ");
-         System.out.println("4. Show members in arrears \n"); 
+         System.out.println("4. Show members in arrears "); 
          // Coach
          System.out.println("5. Register result");
          System.out.println("6. Print top five swimmers");
-         System.out.println("7. Print results\n");
+         System.out.println("7. Print results");
          System.out.println("8. Exit");
          System.out.println("*************************************************");
       
