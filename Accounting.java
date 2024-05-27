@@ -11,7 +11,7 @@ public class Accounting{
    private int overSixtyFee = 1200; 
    private int passiveFee = 500;  
    private int invoiceNumber = 0; 
-    //private LocalDate invoice;
+   private LocalDate invoice;
    private LocalDate invoiceDate = LocalDate.now();//calculated 
    private LocalDate dueDate = invoiceDate.plusDays(2); // calculated 
      
