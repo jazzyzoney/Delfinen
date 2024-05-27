@@ -1,5 +1,4 @@
 //Author Solvej T.
-
 import java.util.List;
 import java.util.ArrayList; //to create list of invoices
 import java.time.LocalDate; //to set invoice date
@@ -67,24 +66,24 @@ public class Accounting{
    } 
         
    public int getMemberTypeFee(Member member){ //Enum ageType.           
-   AgeType ageType = member.getAgeType();
+      AgeType ageType = member.getAgeType();
      
-   int fee;
-   if (!member.isActiveMembership()){
-   return passiveFee;  
-   
-   } else {  
-   switch (ageType) {
-        case JUNIOR:
-            return juniorFee;
-        case SENIOR:
-            return seniorFee;
-        case OVERSIXTY:
-            return overSixtyFee;
-        default:
-            System.out.println("Unknown membership type.");
-            return 0;
-    }
-}
-}
+      int fee;
+      if (!member.isActiveMembership()){
+         return passiveFee;  
+      
+      } else {  
+         switch (ageType) {
+            case JUNIOR:
+               return juniorFee;
+            case SENIOR:
+               return seniorFee;
+            case OVERSIXTY:
+               return overSixtyFee;
+            default:
+               System.out.println("Unknown membership type.");
+               return 0;
+         }
+      }
+   }
 }

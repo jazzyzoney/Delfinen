@@ -1,5 +1,4 @@
-//Solvej T. (author)
- 
+//Author Solvej T.
 import java.time.LocalDate; 
 
 public class Invoice { //invoice contract, model, template

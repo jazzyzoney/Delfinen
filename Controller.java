@@ -185,7 +185,6 @@ public class Controller {
                      competitionName = scanner.nextLine();
                   }
                   competitionHandler.RecordResult(resultType, competitor, resultTime, discipline, competitionName);
-                  System.out.println("Result recorded");
                } else {
                   System.out.println("Competitor not found");
                }
