@@ -116,7 +116,7 @@ public class Controller {
                   System.out.println("Member added successfully!");
                   membersDatabase.printMemberInfo(newMember);
                } catch (Exception e) {
-                  System.out.println("An error occurred:Check swim type ");
+                  System.out.println("An error occurred:Check swim type and capital letters: ");
                }
                break;
             case 2:
