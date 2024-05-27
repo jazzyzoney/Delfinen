@@ -63,7 +63,7 @@ public class Invoice { //invoice contract, model, template
        if(today.isAfter(dueDate) && isPaid == false){
        return true;
        }
-       System.out.println("Not paid");
+       
        return false;  
        }          
    }         
