@@ -1,3 +1,6 @@
+//Author Solvej T.
+
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
@@ -11,9 +14,7 @@ public class InvoiceDatabase{
      List<Invoice> overdues = new ArrayList<>();
     }
      
-    //public List<Invoice> invoices = new ArrayList<>();
-
-    public void generateSomeInvoices(){ 
+        public void generateSomeInvoices(){ 
  
         invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 1, 500, "480fd92g", true));
         invoices.add(new Invoice(LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 01).plusDays(2), 2, 1200, "480fd92h", true));
@@ -55,16 +56,16 @@ public class InvoiceDatabase{
         System.out.println("Invoice number: " + invoice.getInvoiceNumber());
         System.out.println("Amount due: " + invoice.getFee());
         System.out.println("MemberID: " + invoice.getMemberId());
-        System.out.println("Payment: " + invoice.getIsPaid());
+        System.out.println("Payment confirmation: " + invoice.getIsPaid());
         System.out.println("*********************************************************");
         
    }
    
   
        public List<Invoice> findOverdueInvoices() { 
-       List<Invoice> overdues = new ArrayList<>(); //// Stores overdue invoices 
+       List<Invoice> overdues = new ArrayList<>(); // Stores overdue invoices 
          for (Invoice invoice : invoices) { // Code to be executed FOR EACH (loop) element
-            if (invoice.isOverdue()){ //// Checks if invoice is overdue
+            if (invoice.isOverdue()){ //Checks if invoice is overdue
             overdues.add(invoice);
         }
       }

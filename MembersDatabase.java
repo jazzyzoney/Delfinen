@@ -42,7 +42,7 @@ public class MembersDatabase {
          }
       }
    }
-   // This method is a part of Solvejs  work with payment.
+   // This method is a part of Solvejs work with payment.
    public Member findMember(String memberId){
       for (Member member : members){    
          if(member.getMemberId().equals(memberId)){
