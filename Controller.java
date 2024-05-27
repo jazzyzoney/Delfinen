@@ -36,13 +36,13 @@ public class Controller {
          System.out.println("1. Register new member");
          System.out.println("2. Print all members");
          // Accountant
-         System.out.println("3. Create invoice");
-         System.out.println("4.Print all current invoices"); 
-         System.out.println("5.Print members in arrears");
+         System.out.println("3. Create new invoice: ");
+         System.out.println("4. Show members in arrears: "); 
+         
          // Coach
-         System.out.println("6. Register result");
-         System.out.println("7. Print top five swimmers");
-         System.out.println("8. Exit");
+         System.out.println("5. Register result");
+         System.out.println("6. Print top five swimmers");
+         System.out.println("7. Exit");
          System.out.println("*************************************************");
       
          int option = scanner.nextInt();
@@ -77,20 +77,20 @@ public class Controller {
                         System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
                      }
                   }               
-                  System.out.println("Enter active membership status (true/false):");
+                  System.out.println("Enter active membership status (true/false): ");
                   boolean activeMembership = Boolean.parseBoolean(scanner.nextLine());
                
                   SwimType swimType;
-                    while (true) {
-                        System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
-                        try {
-                            swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
-                            break;
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Invalid input. Please enter COMPETITIVE or NONCOMPETITIVE.");
-                        }
-                    }
-
+                  while (true) {
+                     System.out.println("Enter swim type (COMPETITIVE/NONCOMPETITIVE):");
+                     try {
+                        swimType = SwimType.valueOf(scanner.nextLine().toUpperCase());
+                        break;
+                     } catch (IllegalArgumentException e) {
+                        System.out.println("Invalid input. Please enter COMPETITIVE or NONCOMPETITIVE.");
+                     }
+                  }
+               
                
                   Member newMember;
                   if (swimType == SwimType.COMPETITIVE) {
@@ -142,20 +142,17 @@ public class Controller {
                break;
          
          
+          
             case 4:
-               System.out.println("Show members in arrears.");
-                 
-               invoiceDatabase.printOverdues(); 
-            case 5:
-               System.out.println("Show all currant invoices");
+               System.out.println("Show members in arrears: ");
                
-               invoiceDatabase.printAllInvoices();
+               invoiceDatabase.printOverdues(); 
               
-               break;                                                    
+               break;                                               
          
             // Coach
          
-            case 6:
+            case 5:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();
             
@@ -187,13 +184,13 @@ public class Controller {
                }
                break;
                
-            case 7:
+            case 6:
                System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
                int disciplineNumber = scanner.nextInt();
                competitionHandler.TopFive(disciplineNumber);
                break;
          
-            case 8:
+            case 7:
                System.out.println("Exit");
                scanner.close();
                System.exit(0);
