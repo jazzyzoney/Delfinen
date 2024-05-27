@@ -19,15 +19,11 @@ public class Controller {
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
-      //InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
-      //Accounting accounting = new Accounting();
-      //invoiceDatabase.generateSomeInvoices();
-      //Boolean overdue = Invoice.isOverdue();
-      
-     
-     //List<Member> members = new ArrayList<>();
-     //Invoice invoice = new Invoice();
-                     
+      InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
+      Accounting accounting = new Accounting();
+      invoiceDatabase.generateSomeInvoices();
+      Boolean overdue = Invoice.isOverdue();
+             
       do {
          System.out.println();
          System.out.println("Welcome to the Swimming Club Management System!\n");
@@ -37,8 +33,8 @@ public class Controller {
          System.out.println("1. Register new member");
          System.out.println("2. Print all members\n");
          // Accountant
-         System.out.println("3. Create new invoice: ");
-         System.out.println("4. Show members in arrears: \n"); 
+         System.out.println("3. Create new invoice ");
+         System.out.println("4. Show members in arrears \n"); 
          // Coach
          System.out.println("5. Register result");
          System.out.println("6. Print top five swimmers");
@@ -125,7 +121,6 @@ public class Controller {
                break;
          
             // Accountant
-            /*
             case 3:
                System.out.println("Register a payment");
                
@@ -139,18 +134,13 @@ public class Controller {
                      accountingMember = currentMember;
                   }
                } 
-               
                accounting.createInvoice(accountingMember);   
                break;
-         
-         
-          
+
             case 4:
                System.out.println("Show members in arrears: ");
-               
                invoiceDatabase.printOverdues(); 
-              
-               break;    */                                            
+               break;                                           
          
             // Coach
          

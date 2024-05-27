@@ -67,38 +67,20 @@ public class Accounting{
    } 
         
    public int getMemberTypeFee(Member member){ //Enum ageType.           
-      
-         return passiveFee;
-      } 
-      AgeType ageType = member.getAgeType();
-   
-      switch (ageType){
-         case JUNIOR: 
-            return juniorFee; 
-           //break;  
-         case SENIOR:
+   AgeType ageType = member.getAgeType();
+
+    switch (ageType) {
+        case JUNIOR:
+            return juniorFee;
+        case SENIOR:
             return seniorFee;
-            //break;
-         case OVERSIXTY:
+        case OVERSIXTY:
             return overSixtyFee;
-            //break;
-         default: 
-            System.out.println("Unknown membership type.");       
+        case PASSIVE:
+            return passiveFee;
+        default:
+            System.out.println("Unknown membership type.");
             return 0;
-      }
-   }
-} 
- 
- 
-  
-   
-   
-   
- 
-
-
- 
-
-
-
-                
+    }
+}
+}
