@@ -1,21 +1,12 @@
 //Author Jasmin
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 public class CompetitionHandler {
-
-   String competitionName;
-   //getter
-   public String getCompetitionName() {
-      return competitionName;
-   }
-   //setter
-   public void setCompetitionName(String competitionName) {
-      this.competitionName = competitionName;
-   }
 
    //arraylister junior - 4 discipliner
    public ArrayList<Competitor> juniorSwimmer = new ArrayList<>();
@@ -75,7 +66,7 @@ public class CompetitionHandler {
    }
 
    //writing results to: a list with competition results, a list with training results
-   public void RecordResult(int resultType, Competitor competitor, String resultTime, String discipline) {
+   public void RecordResult(int resultType, Competitor competitor, String resultTime, String discipline, String competitionName) {
       //switch case 1. training results, 2. competition results
       switch (resultType) {
          case 1:
@@ -88,7 +79,8 @@ public class CompetitionHandler {
          case 2:
             Duration competitionResult = parseDurationFromTimeString(resultTime);
             competitor.setResult(competitionResult);
-            //set date, rank...?
+            competitor.setDate(LocalDateTime.now());
+            competitor.setCompetitionName(competitionName);
             addResultToDiscipline(competitor, competitionResult, discipline);
             System.out.println("Competition result registered for: " + competitor.getMemberId());
             break;
@@ -154,6 +146,7 @@ public class CompetitionHandler {
       if (result != null) {
          System.out.println(competitor.getName()); //competitor name
          System.out.println("Competition result: " + result);
+         System.out.println("Competition " + competitor.getCompetitionName());
          System.out.println("Date: " + competitor.getDate()); //competition date
       }
    
@@ -161,6 +154,7 @@ public class CompetitionHandler {
       if (trainingResult != null) {
          System.out.println("Training result: " + trainingResult);
          System.out.println("Date: " + competitor.getTrainingDate()); //training date
+         System.out.println("*****************************");
       }
    }
 
@@ -170,67 +164,83 @@ public class CompetitionHandler {
       int seniorDiscipline = discipline;
       int juniorDiscipline = discipline;
    
-      //loop over every arraylist and print
+   //loop over every arraylist and print
       switch (seniorDiscipline) {
-         //SENIOR RESULTS
-         //seniorBackCrawl
+      //SENIOR RESULTS
+      //seniorBackCrawl
          case 1:
-            System.out.println("Senior " + discipline + " results: ");
+            System.out.println("Senior " + discipline + " training results: ");
             for (Competitor competitor : seniorBackCrawl) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //seniorCrawl
+      //seniorCrawl
          case 2:
-            System.out.println("Senior " + discipline + " results: ");
+            System.out.println("Senior " + discipline + " training results: ");
             for (Competitor competitor : seniorCrawl) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //seniorBreast
+      //seniorBreast
          case 3:
-            System.out.println("Senior " + discipline + " results: ");
+            System.out.println("Senior " + discipline + " training results: ");
             for (Competitor competitor : seniorBreast) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //seniorButterfly
+      //seniorButterfly
          case 4:
-            System.out.println("Senior " + discipline + " results: ");
+            System.out.println("Senior " + discipline + " training results: ");
             for (Competitor competitor : seniorButterfly) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
       }
    
-      //JUNIOR RESULTS
+   // JUNIOR RESULTS
       switch (juniorDiscipline) {
-         //juniorBackCrawl
+      //juniorBackCrawl
          case 1:
-            System.out.println("Junior " + discipline + " results: ");
+            System.out.println("Junior " + discipline + " training results: ");
             for (Competitor competitor : juniorBackCrawl) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //juniorCrawl
+      //juniorCrawl
          case 2:
-            System.out.println("Junior " + discipline + " results: ");
+            System.out.println("Junior " + discipline + " training results: ");
             for (Competitor competitor : juniorCrawl) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //juniorBreast
+      //juniorBreast
          case 3:
-            System.out.println("Junior " + discipline + " results: ");
+            System.out.println("Junior " + discipline + " training results: ");
             for (Competitor competitor : juniorBreast) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
-         //juniorButterfly
+      //juniorButterfly
          case 4:
-            System.out.println("Junior " + discipline + " results: ");
+            System.out.println("Junior " + discipline + " training results: ");
             for (Competitor competitor : juniorButterfly) {
-               printResult(competitor);
+               if (competitor.getTrainingResult() != null) {
+                  printResult(competitor);
+               }
             }
             break;
       }
@@ -263,23 +273,22 @@ public class CompetitionHandler {
             break;
       }
       
-      //sort both lists based on training results (lowest time is best)
-      Collections.sort(seniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));
-      Collections.sort(juniorTopList, (c1, c2) -> c1.getTrainingResult().compareTo(c2.getTrainingResult()));
+      // Sort the lists based on training results (ascending order)
+      Collections.sort(seniorTopList, Comparator.comparing(Competitor::getTrainingResult));
+      Collections.sort(juniorTopList, Comparator.comparing(Competitor::getTrainingResult));
    
-      //print top 5 for Seniors
+    // Print top 5 for Seniors
       System.out.println("Senior " + getDisciplineName(discipline) + " results:");
       for (int i = 0; i < Math.min(5, seniorTopList.size()); i++) {
          printResult(seniorTopList.get(i));
       }
    
-      //print top 5 for Juniors
+    // Print top 5 for Juniors
       System.out.println("Junior " + getDisciplineName(discipline) + " results:");
       for (int i = 0; i < Math.min(5, juniorTopList.size()); i++) {
          printResult(juniorTopList.get(i));
       }
    }
-
    //helper method to convert discipline number to discipline name
    private String getDisciplineName(int discipline) {
       switch (discipline) {

@@ -15,12 +15,13 @@ public class Controller {
    public static void controller() {
       Scanner scanner = new Scanner(System.in);
       DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+      DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
       membersDatabase.generateSomeMembers();
-      InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
-      Accounting accounting = new Accounting();
-      invoiceDatabase.generateSomeInvoices();
+      //InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
+      //Accounting accounting = new Accounting();
+      //invoiceDatabase.generateSomeInvoices();
       //Boolean overdue = Invoice.isOverdue();
       
      
@@ -34,15 +35,15 @@ public class Controller {
          System.out.println("*************************************************");
          // Chairman
          System.out.println("1. Register new member");
-         System.out.println("2. Print all members");
+         System.out.println("2. Print all members\n");
          // Accountant
          System.out.println("3. Create new invoice: ");
-         System.out.println("4. Show members in arrears: "); 
-         
+         System.out.println("4. Show members in arrears: \n"); 
          // Coach
          System.out.println("5. Register result");
          System.out.println("6. Print top five swimmers");
-         System.out.println("7. Exit");
+         System.out.println("7. Print results\n");
+         System.out.println("8. Exit");
          System.out.println("*************************************************");
       
          int option = scanner.nextInt();
@@ -124,6 +125,7 @@ public class Controller {
                break;
          
             // Accountant
+            /*
             case 3:
                System.out.println("Register a payment");
                
@@ -148,7 +150,7 @@ public class Controller {
                
                invoiceDatabase.printOverdues(); 
               
-               break;                                               
+               break;    */                                            
          
             // Coach
          
@@ -166,7 +168,17 @@ public class Controller {
                System.out.println("Enter result time in format mm:ss.SSS (e.g., 02:22.111):");
                String resultTime = scanner.nextLine();
                Duration result = competitionHandler.parseDurationFromTimeString(resultTime);
-            
+               
+               System.out.println("Enter result date (yyyy-MM-dd):");
+               String resultDateStr = scanner.nextLine();
+               LocalDate resultDate;
+               try {
+                  resultDate = LocalDate.parse(resultDateStr, dateFormatter);
+               } catch (DateTimeParseException e) {
+                  System.out.println("Invalid date format. Please enter date in yyyy-MM-dd format.");
+                  break;
+               }
+               
             // Find the competitor
                Competitor competitor = null;
                for (Member member : membersDatabase.getMembers()) {
@@ -175,9 +187,14 @@ public class Controller {
                      break;
                   }
                }
-            
+               
                if (competitor != null) {
-                  competitionHandler.RecordResult(resultType, competitor, resultTime, discipline);
+                  String competitionName = "";
+                  if (resultType == 2) {
+                     System.out.println("Enter competition name:");
+                     competitionName = scanner.nextLine();
+                  }
+                  competitionHandler.RecordResult(resultType, competitor, resultTime, discipline, competitionName);
                   System.out.println("Result recorded");
                } else {
                   System.out.println("Competitor not found");
@@ -189,8 +206,14 @@ public class Controller {
                int disciplineNumber = scanner.nextInt();
                competitionHandler.TopFive(disciplineNumber);
                break;
-         
+            
             case 7:
+               System.out.println("Enter discipline number (1: Back Crawl, 2: Crawl, 3: Breast, 4: Butterfly):");
+               int disciplineNumbers = scanner.nextInt();
+               competitionHandler.getResults(disciplineNumbers);
+               break; 
+            
+            case 8:
                System.out.println("Exit");
                scanner.close();
                System.exit(0);
