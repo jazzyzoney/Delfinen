@@ -4,9 +4,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
+import java.time.format.DateTimeFormatter;
 
 public class CompetitionHandler {
+   
+   DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
    //arraylister junior - 4 discipliner
    public ArrayList<Competitor> juniorSwimmer = new ArrayList<>();
@@ -71,10 +73,9 @@ public class CompetitionHandler {
       switch (resultType) {
          case 1:
             Duration trainingResult = parseDurationFromTimeString(resultTime);
-            
             competitor.setTrainingResult(trainingResult);
             competitor.setTrainingDate(LocalDateTime.now());
-            System.out.println("Training result registered for: " + competitor.getMemberId());
+            System.out.println("Training result registered for: " + competitor.getMemberId() + " : " + competitor.getName());
             break;
          case 2:
             Duration competitionResult = parseDurationFromTimeString(resultTime);
@@ -82,7 +83,7 @@ public class CompetitionHandler {
             competitor.setDate(LocalDateTime.now());
             competitor.setCompetitionName(competitionName);
             addResultToDiscipline(competitor, competitionResult, discipline);
-            System.out.println("Competition result registered for: " + competitor.getMemberId());
+            System.out.println("Competition result registered for: " + competitor.getMemberId() + " : " + competitor.getName());
             break;
          default:
             System.out.println("invalid");
@@ -147,13 +148,14 @@ public class CompetitionHandler {
          System.out.println(competitor.getName()); //competitor name
          System.out.println("Competition result: " + result);
          System.out.println("Competition " + competitor.getCompetitionName());
-         System.out.println("Date: " + competitor.getDate()); //competition date
+         System.out.println("Date: " + competitor.getDate().format(dateFormatter)); //competition date
       }
    
       Duration trainingResult = competitor.getTrainingResult();
       if (trainingResult != null) {
+         System.out.println(competitor.getName()); //competitor name
          System.out.println("Training result: " + trainingResult);
-         System.out.println("Date: " + competitor.getTrainingDate()); //training date
+         System.out.println("Date: " + competitor.getTrainingDate().format(dateFormatter)); //training date
          System.out.println("*****************************");
       }
    }
