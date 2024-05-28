@@ -1,2 +1,2 @@
 # How To
-System for Delfinen
+System for Svømmeklubben Delfinen
