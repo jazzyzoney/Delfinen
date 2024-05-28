@@ -1,72 +1,126 @@
-//Author  Caroline B. 
+//Author Caroline B
+import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
-public class Member extends Person {
+enum AgeType {
+   JUNIOR, SENIOR, OVERSIXTY
+}
 
-   public int memberId;
-   public boolean isWoman = true;
-   public int age;
-   public LocalDate birthDate;
-   public boolean active;
-   public boolean competitive; 
-   public String formatted;
-   public String membershipType;
- 
-  /* public Member (int memberId, boolean isWoman, LocalDate birthDate, boolean active, boolean competitive, String membershipAgeType){
-   // Initializing the variables.this.id = id; 
-      this.memberId = memberId;
-      this.birthDate = birthDate;
-      this.active = active;
-      this.competitive = competitive;
-      this.membershipType = membershipType;
+enum SwimType {
+   COMPETITIVE, NONCOMPETITIVE
+}
+
+//  Instance field.
+public class Member {
+   public String name; // console input
+   private String phoneNumber; // console input - husk try-catch til antal cifre. Forlang 8.
+   private String memberId; // calculated 
+   private LocalDate birthDate; // console input
+   private int age; // calculated
+   private AgeType ageType; // calculated from birthDate in constructor
+   private SwimType swimType; // console input
+   private boolean activeMembership; // console input
+   private String registrationDate; // calculated from LocalDate.now() in constructor
+   private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
    
-   } */
-   //getters
-   public int getMemberId(){
-      return memberId;
+   // constructor
+   public Member(String name, String phoneNumber, LocalDate birthDate, SwimType swimType, boolean activeMembership) {
+      this.name = name;
+      this.phoneNumber = phoneNumber;
+      this.memberId = createId();
+      this.birthDate = birthDate;
+      this.age = ageCalculator();
+      this.ageType = calculateAgeType();
+      this.swimType = swimType; 
+      this.activeMembership = activeMembership;
+      this.registrationDate = LocalDate.now().format(DATE_FORMATTER);
    }
-   public boolean isWoman(){ // skal get være getIsWoman?
-      return isWoman;
+   
+   // This method is used to create a random MemberId for a new member of the swim club 
+   private String createId() {
+      var full = UUID.randomUUID();
+      var fullAsString = full.toString();
+      return fullAsString.substring(0, 8); // generates a unique 8-character ID using UUIDs.
    }
-   public int getAge(){
-   return age;
+   // This method calculated the from the birthdate  until today.
+   public int ageCalculator() {
+      LocalDate today = LocalDate.now();
+      age = Period.between(getBirthDate(), today).getYears();
+      return age;       
    }
-   public LocalDate getBirthDate(){
+               
+   // Calculate the AgeType to show which kind of membership member it is.
+   private AgeType calculateAgeType() {
+      int age = ageCalculator();
+      if (age < 18) {
+         return AgeType.JUNIOR;
+      } else if (age >= 60) {
+         return AgeType.OVERSIXTY;
+      } else {
+         return AgeType.SENIOR;
+      }
+   }
+
+ 
+   // Getters
+   public String getName() {
+      return name;
+   }
+
+   public String getPhoneNumber() {
+      return phoneNumber;
+   }
+   
+   public LocalDate getBirthDate() {
       return birthDate;
    }
-   public boolean isActive(){
-      return active;
+   
+   public int getAge() {
+      return age;
    }
-   public boolean isCompetitive(){
-      return competitive;
+
+   public String getMemberId() {
+      return memberId;
    }
-   public String getFormatted(){
-      return formatted;
+
+   public boolean isActiveMembership() {
+      return activeMembership;
    }
-   public String getMembershipType(){
-      return membershipType;
+
+   public AgeType getAgeType() {
+      return ageType;
    }
-   //setters
-   public void setMemberId(int memberId){
-    this.memberId = memberId;
+   
+   public String getRegistrationDate() {
+      return registrationDate;
    }
-   public void setIsWoman(boolean isWoman){
-      this.isWoman = isWoman;
+
+   public SwimType getSwimType() {
+      return swimType;
    }
-   public void setBirthDate(String birthDate){
+   
+   // Setters
+   
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public void setPhoneNumber(String phoneNumber) {
+      this.phoneNumber = phoneNumber;
+   }
+
+   public void setBirthDate(String birthDate) {
       this.birthDate = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
    }
-   public void setActive(boolean active){
-      this.active = active;
+
+   public void setMemberId(String memberId) {
+      this.memberId = memberId;
    }
-   public void setCompetitive(boolean competitive){
-      this.competitive = competitive;
-   }
-   public void setFormatted(String formatted){
-      this.formatted = formatted;
-   }
-   public void setMembershipType(String membershipType){
-      this.membershipType = membershipType;
+   
+   public void setSwimType(SwimType swimType) {
+      this.swimType = swimType;
    }
 }
