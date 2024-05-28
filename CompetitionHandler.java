@@ -96,7 +96,8 @@ public class CompetitionHandler {
       String[] secondsAndMillis = parts[1].split("\\.");
       int seconds = Integer.parseInt(secondsAndMillis[0]);
       int milliseconds = Integer.parseInt(secondsAndMillis[1]);
-      return Duration.ofMinutes(minutes).plusSeconds(seconds).plusMillis(milliseconds);   }
+      return Duration.ofMinutes(minutes).plusSeconds(seconds).plusMillis(milliseconds);   
+   }
    
    private void addResultToDiscipline(Competitor competitor, Duration result, String discipline) {
       if (competitor.getAge() < 18) {
@@ -150,7 +151,6 @@ public class CompetitionHandler {
          System.out.println("Competition " + competitor.getCompetitionName());
          System.out.println("Date: " + competitor.getDate().format(dateFormatter)); //competition date
       }
-   
       Duration trainingResult = competitor.getTrainingResult();
       if (trainingResult != null) {
          System.out.println(competitor.getName()); //competitor name

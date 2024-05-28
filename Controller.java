@@ -22,7 +22,6 @@ public class Controller {
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
       invoiceDatabase.generateSomeInvoices();
-      //Boolean overdue = Invoice.isOverdue();
              
       do {
          System.out.println();
@@ -62,7 +61,6 @@ public class Controller {
                         System.out.println("Invalid phone number. Please enter exactly 8 digits.");
                      }
                   }
-               
                   LocalDate birthDate;
                   while (true) {
                      System.out.println("Enter birth date (yyyy-MM-dd):");
@@ -87,8 +85,6 @@ public class Controller {
                         System.out.println("Invalid input. Please enter COMPETITIVE or NONCOMPETITIVE.");
                      }
                   }
-               
-               
                   Member newMember;
                   if (swimType == SwimType.COMPETITIVE) {
                      System.out.println("Enter coach name:");
@@ -108,7 +104,6 @@ public class Controller {
                   } else {
                      newMember = new Member(name, phoneNumber, birthDate, swimType, activeMembership);
                   }
-               
                   membersDatabase.addMember(newMember);
                   System.out.println("Member added successfully!");
                   membersDatabase.printMemberInfo(newMember);
@@ -116,6 +111,7 @@ public class Controller {
                   System.out.println("An error occurred:Check swim type and capital letters: ");
                }
                break;
+               
             case 2:
                membersDatabase.printAllMembers();
                break;
@@ -136,14 +132,13 @@ public class Controller {
                } 
                accounting.createInvoice(accountingMember);   
                break;
-
+         
             case 4:
                System.out.println("Show members in arrears: ");
                invoiceDatabase.printOverdues(); 
                break;                                           
          
             // Coach
-         
             case 5:
                System.out.println("Enter member ID:");
                String getMemberId = scanner.nextLine();
@@ -211,9 +206,5 @@ public class Controller {
                System.out.println("Invalid option. Please try again.");
          }
       } while (true);
-   }
-   
-   private static Duration parseDuration(int m, int s, int ms) {
-      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
    }
 }
