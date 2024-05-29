@@ -66,7 +66,7 @@ public class MembersDatabase {
       System.out.println("Swim type: " + member.getSwimType());
       System.out.println("Active membership?: " + (member.isActiveMembership() ? "Yes" : "No"));
       System.out.println("Registration date: " + member.getRegistrationDate());
-      System.out.println("Registrations date: " + member.getRegistrationDate());
+     
    
 
       
