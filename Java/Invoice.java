@@ -13,59 +13,56 @@ public class Invoice { //invoice contract, model, template
   //Constructor
    
    public Invoice(LocalDate invoiceDate, LocalDate dueDate, int invoiceNumber, int fee, String memberId, boolean isPaid){
-   this.invoiceDate = invoiceDate;
-   this.dueDate = dueDate;
-   this.fee = fee;
-   this.invoiceNumber = invoiceNumber;
-   this.memberId = memberId;
-   this.isPaid = isPaid;
-   
-       }   
+      this.invoiceDate = invoiceDate;
+      this.dueDate = dueDate;
+      this.fee = fee;
+      this.invoiceNumber = invoiceNumber;
+      this.memberId = memberId;
+      this.isPaid = isPaid;
+   }   
         
-       public LocalDate getInvoiceDate(){
-         return invoiceDate;
-       }
+   public LocalDate getInvoiceDate(){
+      return invoiceDate;
+   }
     
-      public LocalDate getDueDate(){
-        return dueDate;
-      }
+   public LocalDate getDueDate(){
+      return dueDate;
+   }
       
-      public int getFee(){
-       return fee;
-      }
+   public int getFee(){
+      return fee;
+   }
       
-      public int getInvoiceNumber(){
-       return invoiceNumber;
-      }
+   public int getInvoiceNumber(){
+      return invoiceNumber;
+   }
       
-      public String getMemberId(){
-         return memberId;
-      }
-    
+   public String getMemberId(){
+      return memberId;
+   }
      
-     public boolean getIsPaid(){
+   public boolean getIsPaid(){
       return isPaid;
    }
      
-     public void setIsPaid(boolean isPaid){
-     this.isPaid = isPaid;
-     }
+   public void setIsPaid(boolean isPaid){
+      this.isPaid = isPaid;
+   }
      //Method called in invoiceDatabase. 
-     @Override
+   @Override
      public String toString() {
-     return "Invoice [memberId=" + memberId + ", fee=" + fee + ", invoiceDate=" + invoiceDate +
+      return "Invoice [memberId=" + memberId + ", fee=" + fee + ", invoiceDate=" + invoiceDate +
          ", dueDate=" + dueDate + ", invoiceNumber=" + invoiceNumber + ", isPaid=" + isPaid + "]";
-     }
+   }
+   
      //Method to calculated members in arrears invoiceDatabase.
-     public Boolean isOverdue(){
-       LocalDate today = LocalDate.now();
-       if(today.isAfter(dueDate) && isPaid == false){
-       return true;
-       }
-       
-       return false;  
-       }          
-   }         
+   public Boolean isOverdue(){
+      LocalDate today = LocalDate.now();
+      if(today.isAfter(dueDate) && isPaid == false){
+         return true;
+      }
+      return false;  
+   }          
+}         
 
            
-       

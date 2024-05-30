@@ -14,7 +14,7 @@ public class Controller {
       DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS");
       MembersDatabase membersDatabase = new MembersDatabase();
       CompetitionHandler competitionHandler = new CompetitionHandler();
-      membersDatabase.generateSomeMembers();
+      //membersDatabase.generateSomeMembers();
       InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
       Accounting accounting = new Accounting();
       invoiceDatabase.generateSomeInvoices();

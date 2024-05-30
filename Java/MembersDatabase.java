@@ -11,7 +11,7 @@ public class MembersDatabase {
       members = new ArrayList<>();
    }
     //This is an arraylist with objects made from the constructor in class Member.
-   public void generateSomeMembers(){
+   /*public void generateSomeMembers(){
       members.add(new Member("John Doe", "12345678", LocalDate.of(2012, 1, 1), SwimType.COMPETITIVE, true));
       members.add(new Member("Jane Doe", "12345678", LocalDate.of(1945,1, 11),SwimType.COMPETITIVE, true));
       members.add(new Member("John Smith", "12345678", LocalDate.of(1956,1, 12),SwimType.COMPETITIVE, true));
@@ -22,7 +22,7 @@ public class MembersDatabase {
       members.add(new Member("Jan Jackson", "12345678", LocalDate.of(2011,06, 1),SwimType.COMPETITIVE, true));
       members.add(new Member("Jojo Jensen", "12345678", LocalDate.of(1867, 04, 1), SwimType.COMPETITIVE,true));
       members.add(new Member("Jaja Jensen", "12345678", LocalDate.of(2000, 1, 1), SwimType.COMPETITIVE, true));
-   }
+   }*/
 
    public void addMember(Member member) {
       members.add(member);
