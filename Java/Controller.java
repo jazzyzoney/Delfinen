@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class Controller {
 
-   public static void main(String[] args) {
-      controller();
-   }
-
    public static void controller() {
       Scanner scanner = new Scanner(System.in);
       DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
